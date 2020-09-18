@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,8 +17,18 @@ namespace Exercises
          Diff21(21) → 0
          */
         public int Diff21(int n)
-        {
-            return 0;
+       
+        
+       {
+            int retValue;
+            retValue = Math.Abs(n - 21);
+            if (n>21)
+
+            return retValue*2;
+            return retValue;
         }
+   
     }
+
+
 }

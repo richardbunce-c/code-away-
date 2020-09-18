@@ -15,8 +15,11 @@ namespace Exercises
          In1020(8, 99) → false
          */
         public bool In1020(int a, int b)
-        {
-            return false;
+        {if (a >= 10 && a <= 20) 
+                return true;
+            if (b >= 10 && b <= 20)
+                return true;
+                return false;
         }
 
     }

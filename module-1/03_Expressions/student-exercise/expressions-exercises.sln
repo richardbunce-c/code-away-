@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercises", "expressions-exercises\Exercises.csproj", "{33B3DB40-C6B4-4C63-AD8F-03B80C9DADFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercises", "expressions-exercises\Exercises.csproj", "{33B3DB40-C6B4-4C63-AD8F-03B80C9DADFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercises.Tests", "Exercises.TEsts\Exercises.Tests.csproj", "{377A6EA2-8A9D-45A6-9AE2-85DFDE4A15E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercises.Tests", "Exercises.TEsts\Exercises.Tests.csproj", "{377A6EA2-8A9D-45A6-9AE2-85DFDE4A15E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

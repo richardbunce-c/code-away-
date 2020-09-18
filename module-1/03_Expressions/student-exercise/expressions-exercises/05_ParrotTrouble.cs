@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,9 +18,12 @@ namespace Exercises
          ParrotTrouble(false, 6) → false
          */
         public bool ParrotTrouble(bool talking, int hour)
-        {
+        {if (!talking)
             return false;
+            if (hour >= 7 && hour <= 20)  
+            return false;   //go back here
+            return true;
         }
-
+        
     }
 }

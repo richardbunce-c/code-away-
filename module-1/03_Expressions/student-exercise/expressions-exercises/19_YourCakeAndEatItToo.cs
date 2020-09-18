@@ -28,7 +28,14 @@ namespace Exercises
          */
         public string YourCakeAndEatItToo(double mealAmount, bool isBirthday)
         {
-            return "";
+            double bdayMealAmt = (mealAmount + (5 * Convert.ToInt32(isBirthday)));
+            if (bdayMealAmt<=10)
+            return "standard";
+            if (bdayMealAmt <= 15)
+                return "special";
+            if (bdayMealAmt >= 15)
+                return "ginormous";
+            return "standard";   
         }
     }
 }

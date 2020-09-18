@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lecture
+﻿namespace Lecture
 {
     public partial class LectureProblem
     {
@@ -17,7 +11,7 @@ namespace Lecture
         */
         public int[] ReturnNewArray()
         {
-            return null;
+            return new int[1];
         }
 
 
@@ -27,10 +21,11 @@ namespace Lecture
 
             TOPIC: Array Creation
         */
-        public int[] ReturnArrayOfKnownSize()
+        public int[] ReturnNewArray()
         {
-            return null;
+            return new int[100];
         }
+
 
         /*
         1c. This method expects an array of strings size n to be returned.
@@ -38,11 +33,10 @@ namespace Lecture
 
             TOPIC: Array Creation
         */
-        public string[] ReturnArrayOfUnknownSize(int n)
+        public string[] ReturnArrayOfKnownSize(int n)
         {
-            return null;
+            return new string[n];
         }
 
-        
     }
 }

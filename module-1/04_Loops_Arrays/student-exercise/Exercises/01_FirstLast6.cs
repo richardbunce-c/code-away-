@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exercises
+﻿namespace Exercises
 {
     public partial class Exercises
     {
@@ -16,8 +10,22 @@ namespace Exercises
          FirstLast6([13, 6, 1, 2, 3]) → false
          */
         public bool FirstLast6(int[] nums)
+
         {
-            return false;
+            return (nums[0] == 6 ||
+                  nums[nums.Length - 1] == 6);
+
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+

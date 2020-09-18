@@ -16,7 +16,7 @@ namespace Lecture
         */
         public int ReturnLastElementOfParam(int[] passedInArray)
         {
-            return 1;
+            return passedInArray[passedInArray.Length -1];
         }
 
         /*
@@ -25,7 +25,7 @@ namespace Lecture
         */
         public int ReturnSecondToLastElementOfParam(int[] passedInArray)
         {
-            return 1;
+            return  passedInArray[passedInArray.Length-2];
         }
 
         /*
