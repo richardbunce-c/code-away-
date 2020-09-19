@@ -17,8 +17,17 @@ namespace Exercises
          */
         public int CountEvens(int[] nums)
         {
-            return 0;
+            int count = 0;
+            for(int i =0; i<nums.Length; i++)
+            {
+                if (nums[i] % 2 == 0)
+                    count++;
+            }
+
+            return count;
         }
+
+
 
     }
 }
