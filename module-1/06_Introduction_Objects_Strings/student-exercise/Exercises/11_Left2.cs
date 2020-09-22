@@ -20,7 +20,7 @@ namespace Exercises
 
             string first2Characters = str.Substring(0, 2);
             string nofirst2Characters = str.Substring(2);
-            return nofirst2Characters+first2Characters;
+            return nofirst2Characters + first2Characters;
         }
     }
-}
+    }

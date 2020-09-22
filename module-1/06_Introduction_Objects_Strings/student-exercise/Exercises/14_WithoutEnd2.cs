@@ -17,7 +17,15 @@ namespace Exercises
          */
         public string WithoutEnd2(string str)
         {
-            return null;
+            //If the string is two chars or less, return ""
+            if (str.Length<=2)
+                {
+                return "";
+            }
+            //Now I know it's at least 3 characters.
+            //Find the substring starting at the second character and ending at the second-last.
+            //Said another way, the length
+            return str.Substring(1, str.Length-2);
         }
     }
 }
