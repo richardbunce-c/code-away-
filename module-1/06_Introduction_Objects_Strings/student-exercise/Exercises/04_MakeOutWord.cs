@@ -18,7 +18,11 @@ namespace Exercises
          */
         public string MakeOutWord(string outword, string word)
         {
-            return null;
+
+            string startTag = outword.Substring(0, 2);
+            string endTag = outword.Substring(2, 2);
+            string str = startTag + word + endTag;
+            return str;
             
         }
     }

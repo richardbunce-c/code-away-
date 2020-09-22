@@ -18,7 +18,11 @@ namespace Exercises
          */
         public string FirstTwo(string str)
         {
-            return null;
+            if (str.Length < 2)
+                return str;
+
+            string first2Char = str.Substring(0, 2);
+            return first2Char;
         }
     }
 }

@@ -17,7 +17,11 @@ namespace Exercises
          */
         public string Right2(string str)
         {
-            return null;
+
+            string lastCharacters = str.Substring(str.Length-2);
+            string restOfCharacters = str.Substring(0, str.Length-2);
+
+            return lastCharacters+restOfCharacters;
         }
     }
 }
