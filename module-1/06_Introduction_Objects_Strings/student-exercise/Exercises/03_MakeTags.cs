@@ -18,7 +18,10 @@ namespace Exercises
         */
         public string MakeTags(string tag, string word)
         {
-            return null;
+            String starttag = "<" + tag + ">";
+            String endtag = "</" + tag + ">";
+            String str = starttag + word + endtag;
+            return str;
         }
     }
 }

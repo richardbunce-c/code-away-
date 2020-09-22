@@ -29,7 +29,7 @@ namespace ConsoleApp1
                   {
                       Console.WriteLine(kids[i]);
                   }
-              */
+              
             Console.Write("Enter some numbers, separated by space");
             string input = Console.ReadLine();
             string[] stringNumbers = input.Split(" ");
@@ -47,5 +47,12 @@ namespace ConsoleApp1
 
             Console.WriteLine($"There are {stringNumbers.Length} numbers totalling {sum}, and averaging {(double)sum/stringNumbers.Length}");      
                     }
-    }
-}
+    */
+            string[] cities = new String[] { "Cleveland", "Columbus", "Cincinnati", "Akron", "Dayton", "Toledo" };
+
+
+            string result = cities[4];
+        }
+        }
+        }
+    
