@@ -8,10 +8,11 @@ namespace DictionaryCollection
         static void Main(string[] args)
         {
             string stateCode = "AR";
+            
             string state = LookupState(stateCode);
-            Console.WriteLine($"The state for code '{stateCode}' is '{state}'");
+            //string state = LookupUsingDictionary(stateCode);
 
-            //DictionaryDemo();
+            Console.WriteLine($"The state for code '{stateCode}' is '{state}'");
 
             //HashSetDemo();
 
@@ -27,9 +28,10 @@ namespace DictionaryCollection
 
             return null;
         }
-        static void DictionaryDemo()
+        static string LookupUsingDictionary(string stateCode)
         {
             // Demonstrate creating and searching a dictionary
+            return null;
         }
 
         static void HashSetDemo()
