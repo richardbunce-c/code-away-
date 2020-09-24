@@ -73,13 +73,7 @@ namespace Exercises
          FindLargest( [987, 1234, 9381, 731, 43718, 8932] ) -> 43718
          FindLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
          */
-        [TestMethod]
-        public void Exercise05_FindLargest()
-        {
-            Assert.AreEqual(33333, exercises.FindLargest(new List<int>() { 11, 200, 43, 84, 9917, 4321, 1, 33333, 8997 }));
-            Assert.AreEqual(43718, exercises.FindLargest(new List<int>() { 987, 1234, 9381, 731, 43718, 8932 }));
-            Assert.AreEqual(81238, exercises.FindLargest(new List<int>() { 34070, 1380, 81238, 7782, 234, 64362, 627 }));
-        }
+   
 
         /*
          Given an array of Integers, return a List of Integers containing just the odd values.

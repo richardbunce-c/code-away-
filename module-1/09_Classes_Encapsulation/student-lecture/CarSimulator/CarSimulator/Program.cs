@@ -9,6 +9,9 @@ namespace CarSimulator
             // Create a new Car object (Create a new object of type Car)
             Car myCar = new Car("ABC1234", 1965, "Ford", "Mustang");
 
+            myCar.Color = "Yellow";
+
+            Console.WriteLine($"My car is {myCar.Color} and is {myCar.Age} years old.")
             // Display the car property value
             string make = myCar.Make;
             string model = myCar.Model;

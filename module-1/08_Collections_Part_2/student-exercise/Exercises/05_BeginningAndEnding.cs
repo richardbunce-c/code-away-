@@ -18,7 +18,21 @@ namespace Exercises
          */
         public Dictionary<string, string> BeginningAndEnding(string[] words)
         {
-            return null;
+            //Create a dictionary to return
+            Dictionary<string, string> resultDict = new Dictionary<string, string>();
+            // Loop through the string array that was given to us
+            foreach (string s in words)
+            {
+
+
+                //Get the first and last chars of the string
+                string firstChar = s.Substring(0, 1);
+                string lastChar = s.Substring(s.Length - 1);
+                //Add/update the dictionary with key=first char and value=last char
+                resultDict[firstChar] = lastChar;
+            }
+            //Return dictionary that we built
+            return resultDict;
         }
     }
 }

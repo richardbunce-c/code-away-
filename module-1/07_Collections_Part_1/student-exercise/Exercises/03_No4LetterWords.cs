@@ -17,7 +17,35 @@ namespace Exercises
          */
         public List<string> No4LetterWords(string[] stringArray)
         {
-            return null;
-        }
+            //    //Create a list to hold the string we want to return
+            List<string> resultList = new List<string>();
+
+//            //    //Loop through the array.
+//            for (int i = 0; i < stringArray.Length; i++)
+//            {
+//                //        //Setup a variable pointing to the string we are interested in 
+//                string s = stringArray[i];
+
+//            //        //If the length of the string at i is != 4. add the string to the result list
+//            if (s.Length != 4)
+//            {
+//                resultList.Add(s);
+//            }
+//            //Return the result list
+
+//            return resultList;
+//        }
+            
+//            return null;
+//        }
+//}
+//}
+foreach (string s in stringArray)
+{
+    if(s.Length !=4)
+    {
+        resultList.Add(s);
     }
 }
+return resultList;
+}}}

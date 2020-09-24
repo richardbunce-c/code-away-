@@ -16,7 +16,25 @@ namespace Exercises
          */
         public string AltPairs(string str)
         {
-            return null;
+            //Loop through the string, starting at 0, for every 4th character, and grab
+            //the char at i and the char at i + 1
+            string result = "";
+            for (int i=0; i <str.Length; i= i +4)
+            {
+                if (i == str.Length - 1)
+                {
+                    result += str.Substring(i, 1);
+
+                }
+                else
+                {
+
+
+                    result += str.Substring(i, 2);
+                }
+                }
+            return result;
+            
         }
     }
 }

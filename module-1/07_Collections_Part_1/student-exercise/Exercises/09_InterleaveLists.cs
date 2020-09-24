@@ -18,7 +18,27 @@ namespace Exercises
         */
         public List<int> InterleaveLists(List<int> listOne, List<int> listTwo)
         {
-            return null;
+            //Creat an empty list to return
+            List<int> resultList = new List<int>();
+            //Find the length of the longest list
+            int maxLength = listOne.Count;
+            if (listTwo.Count>maxLength)
+            {
+                maxLength = listTwo.Count;
+            }
+
+            for (int i=0; i<maxLength; i++)
+            {
+                if(i<=listOne.Count-1)
+                {
+                    resultList.Add(listOne[i]);
+                }
+                if (i <= listTwo.Count - 1)
+                {
+                    resultList.Add(listTwo[i]);
+                }
+            }
+            return resultList;
         }
     }
 }
