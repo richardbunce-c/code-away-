@@ -12,17 +12,17 @@ namespace Accounts
     class ATMCLI
     {
         // TODO 05: Update the CLI to use the accounts
-        //private SavingsAccount savingsAccount;
-        //private CheckingAccount checkingAccount;
+        private SavingsAccount savingsAccount;
+        private CheckingAccount checkingAccount;
 
         // TODO 05: Update the CLI to use the accounts
-        //public ATMCLI(SavingsAccount savingsAccount, CheckingAccount checkingAccount)
-        //{
-        //    this.savingsAccount = savingsAccount;
-        //    this.checkingAccount = checkingAccount;
-        //}
+        public ATMCLI(SavingsAccount savingsAccount, CheckingAccount checkingAccount)
+        {
+            this.savingsAccount = savingsAccount;
+            this.checkingAccount = checkingAccount;
+        }
 
-        public void Run()
+    public void Run()
         {
             while (true)
             {
@@ -78,17 +78,17 @@ Please choose an option: ");
         private void DoMonthlyProcessing()
         {
             Success("Performing monthly processing...");
-            // TODO 05: Update the CLI to use the accounts
-            //Success(savingsAccount.DoMonthlyProcessing());
-            //Success(checkingAccount.DoMonthlyProcessing());
-        }
+        // TODO 05: Update the CLI to use the accounts
+        Success(savingsAccount.DoMonthlyProcessing());
+        Success(checkingAccount.DoMonthlyProcessing());
+    }
 
         private void WriteCheck()
         {
             decimal checkAmount = GetAmount("Enter the check value: ");
             Success($"Writing check for {checkAmount:C}");
             // TODO 05: Update the CLI to use the accounts
-            //checkingAccount.WriteCheck(checkAmount);
+            checkingAccount.WriteCheck(checkAmount);
         }
 
         private void Transfer()
@@ -96,14 +96,14 @@ Please choose an option: ");
             decimal transferAmount = GetAmount("Enter the amount to transfer: ");
             Success($"Transferring {transferAmount:C} from savings to checking");
             // TODO 05: Update the CLI to use the accounts
-            //if (savingsAccount.Withdraw(transferAmount) > 0)
-            //{
-            //    checkingAccount.Deposit(transferAmount);
-            //}
-            //else
-            //{
-            //    Error("There was not enough money. Transfer cancelled");
-            //}
+            if (savingsAccount.Withdraw(transferAmount) > 0)
+            {
+                checkingAccount.Deposit(transferAmount);
+            }
+            else
+            {
+                Error("There was not enough money. Transfer cancelled");
+            }
         }
 
         private void DepositSavings()
@@ -111,21 +111,21 @@ Please choose an option: ");
             decimal depositAmount = GetAmount("Enter the amount to deposit: ");
             Success($"Depositing {depositAmount:C} into savings");
             // TODO 05: Update the CLI to use the accounts
-            //savingsAccount.Deposit(depositAmount);
+            savingsAccount.Deposit(depositAmount);
         }
 
         private void DisplayBalance()
         {
             // TODO 05: Update the CLI to use the accounts
 
-            //string title = "The Savings account balance is";
-            //Success($"{title, -32} {savingsAccount.Balance,10:C}");
-            //title = "The Checking account balance is";
-            //Success($"{title,-32} {checkingAccount.Balance,10:C}");
-            //title = new string('-', 43);
-            //Success(title);
-            //title = "Your total balance is";
-            //Success($"{title,-32} {(checkingAccount.Balance + savingsAccount.Balance),10:C}");
+            string title = "The Savings account balance is";
+            Success($"{title,-32} {savingsAccount.Balance,10:C}");
+            title = "The Checking account balance is";
+            Success($"{title,-32} {checkingAccount.Balance,10:C}");
+            title = new string('-', 43);
+            Success(title);
+            title = "Your total balance is";
+            Success($"{title,-32} {(checkingAccount.Balance + savingsAccount.Balance),10:C}");
         }
 
         private decimal GetAmount(string prompt)

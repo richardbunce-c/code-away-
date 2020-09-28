@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accounts.Models;
+using System;
 using System.Collections.Generic;
 
 /***
@@ -20,9 +21,9 @@ using System.Collections.Generic;
  *      For monthly processing, debit total overdraft fees as well as a transaction fee for every check written.
  ***/
 
-    // TODO 01: Create a BankAccount class with default behavior.
-    // TODO 02: Create a SavingAccount to specialize the BankAccount
-    // TODO 03: Create a CheckingAccount to specialize the BankAccount
+// TODO 01: Create a BankAccount class with default behavior.
+// TODO 02: Create a SavingAccount to specialize the BankAccount
+// TODO 03: Create a CheckingAccount to specialize the BankAccount
 
 namespace Accounts
 {
@@ -35,11 +36,18 @@ namespace Accounts
         /// <param name="args">Not used</param>
         static void Main(string[] args)
         {
+
+
+
+
+
             // TODO 04: Create a savings account and a checking account for the user, and pass those into
             // the ATM
+            SavingsAccount savings = new SavingsAccount("AAA", 500.00M);
+            CheckingAccount checking = new CheckingAccount("CCC", 100.00M, 0.50M);
 
             // Create the CLI and let it run the rest of the logic flow
-            ATMCLI cli = new ATMCLI();
+            ATMCLI cli = new ATMCLI(savings, checking);
             cli.Run();
 
             Console.WriteLine("Thank you for using our ATM!");
