@@ -9,7 +9,7 @@ namespace Lecture.Classes
     /// <summary>
     /// A base farm animal class.
     /// </summary>
-    public class FarmAnimal : ISingable
+    abstract public class FarmAnimal : ISingable
     {       
         /// <summary>
         /// The farm animal's name.
@@ -29,10 +29,8 @@ namespace Lecture.Classes
         /// The noise made when the farm animal makes a sound.
         /// </summary>
         /// <returns></returns>
-        virtual public string MakeSound()
-        {
-            return "";
-        }
+        abstract public string MakeSound();
+
 
         /// <summary>
         /// The noise made when the farm animal makes its sound twice.

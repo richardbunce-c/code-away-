@@ -42,7 +42,8 @@ namespace Lecture.Classes
                 new Chicken(),
                 new Cow(),
                 new Horse(),
-                new Tractor()
+                new Tractor(),
+                new Goat()
             };
 
             foreach (ISingable singable in singables)
