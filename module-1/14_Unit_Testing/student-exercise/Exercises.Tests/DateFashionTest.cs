@@ -8,21 +8,30 @@ namespace Exercises.Tests
     [TestClass]
     public class DateFashionTest
     {
+        DateFashion thisDateFashion = new DateFashion();
         [TestMethod]
-        public void DateFashionDataTest()
+        public void GetATableTest()
         {
-            DateFashionTest restaurantDateFashionTest = new DateFashionTest();
 
-         //Assert.AreEqual
-            
-            {
-
-            } 
-          
-
+            int result = thisDateFashion.GetATable(5, 10);
+            Assert.AreEqual(2, result);
+        }
+        [TestMethod]
+        public void GetATableTest2()
+        {
+            int result = thisDateFashion.GetATable(5, 2);
+            Assert.AreEqual(0, result);
+        }
+        [TestMethod]
+        public void GetATableTest3()
+        {
+            int result = thisDateFashion.GetATable(5,5 );
+            Assert.AreEqual(1, result);
         }
     }
 }
+
+
 /*
       You and your date are trying to get a table at a restaurant. The parameter "you" is the stylishness
       of your clothes, in the range 0..10, and "date" is the stylishness of your date's clothes. The result

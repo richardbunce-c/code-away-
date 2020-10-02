@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,35 @@ namespace Exercises.Tests
 {
     class FrontTimesTest
     {
+        [TestClass]
+        public class FrontTimesStringTest
+        {
+            FrontTimes stringTest = new FrontTimes();
+            [TestMethod]
+            public void GenerateStringTest()
+            {
+                string result = stringTest.GenerateString("Chocolate", 2);
+                Assert.AreEqual("ChoCho", result);
+
+            }
+            [TestMethod]
+            public void GenerateStringTest2()
+            {
+                string result = stringTest.GenerateString("Chocolate", 3);
+                Assert.AreEqual("ChoChoCho", result);
+
+            }
+
+
+
+            [TestMethod]
+        public void GenerateStringTest3()
+            {
+                string result = stringTest.GenerateString("Abc", 3);
+                Assert.AreEqual("AbcAbcAbc", result);
+            }
+        
+        }
     }
 }
 /*

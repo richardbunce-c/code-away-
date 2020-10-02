@@ -44,7 +44,7 @@ namespace AbstractExercise
                         int length = int.Parse(Console.ReadLine());
 
                         //uncomment after step 2:
-                        //newWall = new RectangleWall(name, color, height, length);
+                        newWall = new RectangleWall(name, color, height, length);
                     }
                     else if (shapeChoice == "2")
                     {
@@ -52,7 +52,7 @@ namespace AbstractExercise
                         int sideLength = int.Parse(Console.ReadLine());
 
                         //uncomment after step 4:
-                        //newWall = new SquareWall(name, color, sideLength);
+                        newWall = new SquareWall(name, color, sideLength);
                     }
                     else if (shapeChoice == "3")
                     {

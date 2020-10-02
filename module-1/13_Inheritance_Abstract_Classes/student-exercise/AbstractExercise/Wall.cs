@@ -6,11 +6,16 @@ namespace AbstractExercise
 {
     abstract public class Wall
     {
-        //public string Name { get; }
-        // public string Color { get; }
+       //Readonly prop for wall name
+        public string Name { get; }
+       //Readonly prop for Color
+        public string Color { get; }
 
         public Wall(string name, string color)
-        { }
+        {
+            Name = name;
+            Color = color;
+        }
 
 
 
