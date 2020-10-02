@@ -8,7 +8,7 @@ namespace AbstractExercise
         static void Main(string[] args)
         {
             //uncomment after step 1:
-            //List<Wall> walls = new List<Wall>();
+            List<Wall> walls = new List<Wall>();
 
             while (true)
             {
@@ -22,7 +22,7 @@ namespace AbstractExercise
                 if (userChoice == "1")
                 {
                     //uncomment after step 1:
-                    //Wall newWall = null;
+                    Wall newWall = null;
 
                     Console.WriteLine("What's the name of the new wall?");
                     string name = Console.ReadLine();

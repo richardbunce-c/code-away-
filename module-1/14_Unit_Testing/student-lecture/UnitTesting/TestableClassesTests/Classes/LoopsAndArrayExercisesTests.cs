@@ -20,6 +20,70 @@ namespace TestableClasses.Classes.Tests
         //.AreNotEquilavent() - Opposite or AreEqualivent
         //.Contains() - Checks to see if collection contains a value/object
 
-        
+        [TestMethod]
+        public void ThreePositiveIntegersTest()
+        {
+            //Arrange -  create two 3-integer arrays of positive numbers and create an instance of the CUT(class under test)
+            int[] a = new int[] { 1, 2, 3 };
+            int[] b = new int[] { 4, 5, 6 };
+            LoopsAndArrayExercises exercises = new LoopsAndArrayExercises();
+            //Act
+            int[] actual=exercises.MiddleWay(a, b);
+            //Assert
+
+            //Make sure the result is two elements long
+            Assert.AreEqual(2, actual.Length);
+            //Check for correct element values
+            Assert.AreEqual(2, actual[0]);
+            Assert.AreEqual(5, actual[1]);
+        }
+        [TestMethod]
+        public void ThreePositiveIntegersTest_2()
+        {
+            //Arrange -  create two 3-integer arrays of positive numbers and create an instance of the CUT(class under test)
+            int[] a = new int[] { 7, 7, 7 };
+            int[] b = new int[] { 3, 8, 0 };
+            LoopsAndArrayExercises exercises = new LoopsAndArrayExercises();
+            //Act
+            int[] actual = exercises.MiddleWay(a, b);
+            //Assert
+
+            //Make sure the result is two elements long
+            Assert.AreEqual(2, actual.Length);
+            //Check for correct element values
+            Assert.AreEqual(7, actual[0]);
+            Assert.AreEqual(8, actual[1]);
+        }
+
+        [DataTestMethod]
+        [DataRow(new int[] { 7, 7, 7 }, new int[] { 3, 8, 0 }, new int[] { 7, 8 }, DisplayName ="1, 2, 3 & 4, 5, 6")]
+        [DataRow(new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 }, new int[] { 2, 5 })]
+        [DataRow(new int[] { 5, 2, 9 }, new int[] {1, 4, 5  }, new int[] {2, 4  })]
+        [DataRow(new int[] { -42, -5, -8 }, new int[] { -1, -2, -3 }, new int[] { -5, -2 }, DisplayName ="Test negative integers")]
+        public void ThreeIntegers_DataTests(int [] a,int [] b, int[] expectedArray)
+        {
+            //Arrange -  create two 3-integer arrays of positive numbers and create an instance of the CUT(class under test)
+            LoopsAndArrayExercises exercises = new LoopsAndArrayExercises();
+            //Act
+            int[] actual = exercises.MiddleWay(a, b);
+            //Assert
+
+            //Make sure the result is two elements long
+            Assert.AreEqual(2, actual.Length, "The length of the result should be 2");
+            //Check for correct element values
+            Assert.AreEqual(expectedArray[0], actual[0], "The first element is incorrect");
+            Assert.AreEqual(expectedArray[1], actual[1], "The second element is incorrect");
+        }
+
+
     }
 }
+/*                               MIDDLEWAY TESTS
+     Given 2 int arrays, a and b, each length 3, return a new array length 2 containing their middle 
+     elements.
+     middleWay([1, 2, 3], [4, 5, 6]) → [2, 5]
+     middleWay([7, 7, 7], [3, 8, 0]) → [7, 8]
+     middleWay([5, 2, 9], [1, 4, 5]) → [2, 4]
+     */
+
+
