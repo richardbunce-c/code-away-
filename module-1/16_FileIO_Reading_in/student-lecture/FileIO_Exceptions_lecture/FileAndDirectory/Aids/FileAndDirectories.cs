@@ -33,7 +33,7 @@ namespace Lecture.Aids
         {            
             // Getting the current directory our program is running in
             // not always the same directory our .cs code-file is in
-            string currentDirectory = Directory.GetCurrentDirectory();
+            string currentDirectory = Directory.GetCurrentDirectory();          //bash pwd
             Console.WriteLine(currentDirectory);
 
             // Check to see if a directory exists
@@ -64,7 +64,7 @@ namespace Lecture.Aids
                 string[] files = Directory.GetFiles(@"C:\TestDirectory");
 
                 // Delete a directory
-                Directory.Delete(@"C:\TestDirectory\SubDirectory1");
+                Directory.Delete(@"C:\TestDirectory\SubDirectory1");   // bash mkdir
                 Directory.Delete(@"C:\TestDirectory\SubDirectory2");
                 Directory.Delete(@"C:\TestDirectory");
             }
