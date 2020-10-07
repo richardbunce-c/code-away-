@@ -15,7 +15,8 @@
             get
             {
                 // TODO 01: Implement the derived property for the total value of this cart item
-                return 0;
+
+                return Quantity * Product.Price;
             }
         }
     }

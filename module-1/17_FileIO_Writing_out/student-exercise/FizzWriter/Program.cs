@@ -2,6 +2,7 @@
 using System;
 using FizzWriter.Classes;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace FizzWriter
 {
@@ -34,3 +35,22 @@ namespace FizzWriter
         }
     }
 }
+
+///worked on in class
+//            {
+//                string filePath = "fizzBuzz.txt";
+
+//                if (!File.Exists("Readme.md"))
+//                {
+//                    filePath = Path.Combine(filePath, @"..\..\..\..");
+
+
+//                }
+//                using (StreamWriter sw = new StreamWriter(filePath, false))
+//                {
+//                    sw.WriteLine("I wrote this line to the file!");
+//                }
+//            }
+//        }
+//    }
+//}

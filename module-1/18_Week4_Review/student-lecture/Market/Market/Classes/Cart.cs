@@ -27,6 +27,14 @@ namespace Market.Classes
         {
             // To add items to the cart, look for the product. If it's already in the cart, add to the qty. Else, add it.
             // TODO 02: Implement add to either add or increase the qty of items in the cart.
+            if (itemsDictionary.ContainsKey(product))
+            {
+                itemsDictionary[product].Quantity += quantity;
+            }
+            else   ///the product is not yet in the cart
+            {
+                itemsDictionary[product] = new CartItem(product, quantity);
+            }
         }
 
         public decimal TotalAmount
@@ -36,6 +44,13 @@ namespace Market.Classes
                 //Get the total value of the entire cart
                 decimal amount = 0.00M;
                 // TODO 03: Calculate this derived property
+                //Loop through cartItems and add the value of each
+
+                foreach(KeyValuePair<Product, CartItem> kvp in itemsDictionary)
+                {
+                    CartItem item = kvp.Value;
+                    amount += item.TotalAmount;
+                }
 
                 return amount;
             }

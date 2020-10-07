@@ -8,8 +8,11 @@ namespace FileIO_lecture
         static void Main(string[] args)
         {
             // Create a file in the local folder to write result to
-
+            string filePath = "output.txt";
             // using here...
+           using (StreamWriter writer= new StreamWriter(filePath, false))
+            
+            
             {
                 // Get a list of folders from a directory on disk
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);

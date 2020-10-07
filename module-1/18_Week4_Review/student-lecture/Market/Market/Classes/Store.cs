@@ -13,6 +13,24 @@ namespace Market.Classes
             // TODO 04: Load the inventory Dictionary for lookup by category.  Each key (category) points to 
             // a list of products in that category.
             this.inventory = new SortedDictionary<string, List<Product>>();
+
+            // Loop through the products passed in 
+            foreach (Product product in productList)
+            {
+
+
+                // See if the category is already in our dictionary
+                if (!inventory.ContainsKey(product.Category))
+          
+                {
+                    // If not in the dictionary, Add a kvp, with Category as the Key, and a new  empty List<Products> as the value
+                    inventory[product.Category] = new List<Product>();
+                }
+                //Add the product to the list
+                inventory[product.Category].Add(product);
+            
+            
+            }
         }
 
         public string[] Categories
@@ -23,6 +41,10 @@ namespace Market.Classes
                 List<string> categories = new List<string>();
                 // TODO 05: Use inventory.Keys to get all the categories
 
+                foreach (string category in inventory.Keys)
+                {
+                    categories.Add(category);
+                }
                 return categories.ToArray();
             }
         }
@@ -32,7 +54,10 @@ namespace Market.Classes
             // Return the list of products for a category
 
             // TODO 06: Lookup the category and return the list of products as an array
-
+            if (inventory.ContainsKey(category))
+            {
+                return inventory[category].ToArray();
+            }
 
 
             return new List<Product>().ToArray();
