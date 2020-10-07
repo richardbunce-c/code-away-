@@ -1,0 +1,24 @@
+﻿Apples|6.99|Fruit
+Bananas|1.99|Fruit
+Blueberries|4.99|Fruit
+Broccoli|2.50|Vegetable
+Brussel Sprouts|4.50|Vegetable
+Cauliflower|5.00|Vegetable
+Cheese|12.00|Dairy
+Chicken Breast|5.94|Meat
+Corn|6.00|Vegetable
+Corn Chips|4.99|Snacks
+Cottage Cheese|4.25|Dairy
+Eggplant|3.99|Vegetable
+Eggs|4.99|Dairy
+Ground Beef|8.99|Meat
+Hot Dogs|5.99|Meat
+Kiwi|9.99|Fruit
+Milk|3.99|Dairy
+Pork Chops|14.99|Meat
+Potato Chips|3.99|Snacks
+Tomato|4.45|Fruit
+Twinkies|2.59|Snacks
+Watermelon|5.99|Fruit
+Yogurt|0.89|Dairy
+Zucchini|1.99|Vegetable
