@@ -1,15 +1,33 @@
 -- The name and population of all cities in the USA with a population of greater than 1 million people
-
+Select Name, Population
+From City
+Where Population>1000000 and CountryCode = 'USA' 
 -- The name and population of all cities in China with a population of greater than 1 million people
-
+Select Name, Population
+From City
+Where Population>1000000 And CountryCode='CHN'
 -- The name and region of all countries in North or South America
-  
+  Select Name, Region
+  From Country
+  Where Continent IN (' NorthAmerica', 'SouthAmerica')
 -- The name, continent, and head of state of all countries whose form of government is a monarchy
+Select Name, HeadOfState
+From Country
+Where GovernmentForm like'%Monarchy%'
+
+-- What government forms are in the table
+Select Distinct GovernmentForm
+From Country
 
 -- The name, country code, and population of all cities with a population less than one thousand people
-
+Select Name, CountryCode, Population
+from City
+where Population<1000
 -- The name and region of all countries in North or South America except for countries in the Caribbean
-
+Select Name, Region
+From Country
+Where Continent like ('%America') 
+And Region <> 'Caribbean'
 -- The name, population, and GNP of all countries with a GNP greater than $1 trillion dollars and a population of less than 1 billion people
 
 -- The name and population of all cities in Texas that have a population of greater than 1 million people

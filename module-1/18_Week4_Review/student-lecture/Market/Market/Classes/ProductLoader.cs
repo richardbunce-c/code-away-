@@ -29,9 +29,9 @@ namespace Market.Classes
                         string productName = fields[0];
                         decimal price = decimal.Parse(fields[1]);
                         string category = fields[2];
-
-
-                        Product prod = new Product(productName, price, category);
+                        //int stock = int.Parse(fields[3]);
+                        
+                        Product prod = new Product(productName, price, category/*, stock*/);
                         products.Add(prod);
                     }
                 }
