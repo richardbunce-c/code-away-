@@ -89,7 +89,7 @@ Select GNP/Population as PerCapitaGNP
 From Country
 Where Continent= 'Europe'
 -- 22. The number of years since independence for all countries that have a year of independence (192 rows)
-Select 2020-Indepyear
+Select Name, 2020-Indepyear as 'CountryAge', getdate() as CurrentDate
 From Country
 Where Indepyear is not null
 
