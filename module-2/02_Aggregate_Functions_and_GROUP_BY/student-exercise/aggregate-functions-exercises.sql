@@ -32,50 +32,50 @@ Where continent = 'Africa'
 -- 3. The per capita GNP (i.e. GNP multipled by 1000000 then divided by population) of all countries in the 
 -- world sorted from highest to lowest. Recall: GNP is express in units of one million US Dollars 
 -- (highest per capita GNP in world: 37459.26)
-Select ((GNP * 1000000) / (Population+.0001)) as 'Per Capita GNP'
+Select ((GNP * 1000000) / (Population+.0001)) as 'highest per capita GNP in world'
 From Country
-Order By 'Per Capita GNP' desc
+Order By 'highest per capita GNP in world' desc
 
 
 -- 4. The average life expectancy of countries in South America.
 -- (average life expectancy in South America: 70.9461)
-Select avg(LifeExpectancy)
+Select avg(LifeExpectancy) as 'average life expectancy in South America'
 From Country
 Where Continent = 'South America'
 
 -- 5. The sum of the population of all cities in California.
 -- (total population of all cities in California: 16716706)
-Select sum(Population)
+Select sum(Population) as 'total population of all cities in California'
 From City
 Where District ='California'
 
 -- 6. The sum of the population of all cities in China.
 -- (total population of all cities in China: 175953614)
-Select sum(Population)
+Select sum(Population) as 'total population of all cities in China'
 From City
 Where CountryCode = 'CHN'
 
 -- 7. The maximum population of all countries in the world.
 -- (largest country population in world: 1277558000)
-Select max(Population)
+Select max(Population) as 'largest country population in world'
 From Country
 
 -- 8. The maximum population of all cities in the world.
 -- (largest city population in world: 10500000)
-Select max(Population)
+Select max(Population) as 'largest city population in world'
 From City
 
 
 -- 9. The maximum population of all cities in Australia.
 -- (largest city population in Australia: 3276207)
-Select max(Population)
+Select max(Population) as 'largest city population in Australia'
 From City
 Where CountryCode = 'AUS'
 
 
 -- 10. The minimum population of all countries in the world.
 -- (smallest_country_population in world: 50)
-Select min(Population) as 'smallest_country_population in the world'
+Select min(Population) as 'smallest_country_population in world'
 From Country
 --Should be zero here?
 Where Population>0
@@ -114,7 +114,7 @@ From Country
 -- 15. The population density and life expectancy of the top ten countries with the 
 -- highest life expectancies in descending order. 
 -- (highest life expectancies in world: 83.5, 166.6666, "Andorra")
-Select Top 10 LifeExpectancy, max(Population/SurfaceArea) as 'population density', Name
+Select Top 10 LifeExpectancy as 'highest life expectancies in world', max(Population/SurfaceArea) as 'population density', Name
 From Country
 Group By LifeExpectancy, Name
 Order By LifeExpectancy desc
@@ -123,7 +123,7 @@ Order By LifeExpectancy desc
 -- the world ordered by the absolute value of the difference. Display both 
 -- difference and absolute difference.
 -- (smallest difference: 1.00, 1.00, "Ecuador")
-Select (GNP-GNPOld)as 'difference', abs(GNPOld-GNP)as 'absolute difference', Name
+Select (GNP-GNPOld)as 'smallest difference', abs(GNPOld-GNP)as 'absolute difference', Name
 From Country
 Where GNP is not null and GNPOld is not null
 Group By Name, GNP, GNPOld
