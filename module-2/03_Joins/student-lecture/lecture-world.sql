@@ -1,21 +1,46 @@
 -- List the "city name, country name" and city population, sorted by country and city population descending
+Select Ci.Name as 'City Name', Co.Name as 'Country Name', Ci.Population
+From Country Co
+Join City Ci on Ci.CountryCode=Co.Code
+Order By Co.Name, Ci.Population desc
 
 -- List the city name, country name and the percentage of the country's population in the city
+Select Ci.Name, Co.Name, Ci.Population*100 /Co.Population as 'Percentage'
+From City Ci
+Join Country Co on Ci.CountryCode=Co.Code
 
 -- List the country name and its languages
+Select Name, LanguageName
+From Country Co
+Join CountryLanguage Cl on Co.Code=Cl.CountryCode
+Join Language L on Cl.LanguageId=L.LanguageId
 
 -- List the country name and its official language
+Select Name, LanguageName
+From Country Co
+Join CountryLanguage Cl on Co.Code=Cl.CountryCode
+Join Language L on Cl.LanguageId=L.LanguageId
+Where IsOfficial=1                                   --"1" means true.
 
 -- List the countries and their capital cities
+Select Co.Name as Country, Ci.Name as Capital
+From Country Co
+Join City Ci on Co.Capital = Ci.CityId
+
 
 -- Let's display a list of all countries and their capitals, if they have some.
 -- Where are the other 7 rows?
 
 -- Only 232 rows
 -- But we’re missing entries:
+Select Name, Capital
+From Country
 
 -- There are 239 countries. So how do we show them all even if they don’t have a capital?
 -- That’s because if the rows don’t exist in both tables, we won’t show any information for it. If we want to show data FROM the left side table everytime, we can use a different join:
+Select Co.Name as Country, Ci.Name as Capital
+From Country Co
+Left Outer Join City Ci on Co.Capital = Ci.CityId                      --"Outer" is an optional term
 
 -- ********* LEFT JOIN ***********
 -- A Left join selects all records from the "left" table and matches them with records from the "right" table if a matching record exists.
