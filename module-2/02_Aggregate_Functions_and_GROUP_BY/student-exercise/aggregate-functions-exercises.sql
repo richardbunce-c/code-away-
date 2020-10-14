@@ -83,7 +83,7 @@ Where Population>0
 
 -- 11. The average population of cities in the United States.
 -- (avgerage city population in USA: 286955.3795)                       --Spelling mistake on "Average"
-Select avg(Population) as 'average city population in USA'
+Select avg(Cast (Population as float)) as 'average city population in USA'
 From City
 Where CountryCode = 'USA'
 --Don't know why I'm not returning a decimal.
@@ -91,7 +91,7 @@ Where CountryCode = 'USA'
 
 -- 12. The average population of cities in China.
 -- (average city population in China: 484720.6997 approx.)
-Select avg(Population) as 'average city population in China'
+Select avg(Cast (Population as float)) as 'average city population in China'
 From City
 Where CountryCode = 'CHN'
 
@@ -123,7 +123,7 @@ Order By LifeExpectancy desc
 -- the world ordered by the absolute value of the difference. Display both 
 -- difference and absolute difference.
 -- (smallest difference: 1.00, 1.00, "Ecuador")
-Select (GNP-GNPOld)as 'smallest difference', abs(GNPOld-GNP)as 'absolute difference', Name
+Select (GNP-GNPOld)as 'difference', abs(GNP-GNPOld)as 'absolute difference', Name
 From Country
 Where GNP is not null and GNPOld is not null
 Group By Name, GNP, GNPOld
