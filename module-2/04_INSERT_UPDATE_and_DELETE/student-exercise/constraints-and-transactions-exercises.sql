@@ -26,14 +26,13 @@ Select * from film_actor order by film_id desc
 
 
 -- 4. Add Mathmagical to the category table.
-insert into category values ('Mathmagical')
-
 Select * from category
 
+Insert into category values ('Mathmagical')
 
 -- 5. Assign the Mathmagical category to the following films, "Euclidean PI",
 -- "EGG IGBY", "KARATE MOON", "RANDOM GO", and "YOUNG LANGUAGE"
-Select * from film where title in('Euclidean PI','EGG IGBY','KARATE MOON', 'RANDOM GO','YOUNG LANGUAGE')
+Select film_id, title from film where title in('Euclidean PI','EGG IGBY','KARATE MOON', 'RANDOM GO','YOUNG LANGUAGE')
 
 Insert into film_category values (274,17)
 Insert into film_category values (494,17)
@@ -115,4 +114,13 @@ I could not delete the "Euclidean PI" because it is still being referenced by th
 -- 12. Check database metadata to determine all constraints of the film id, and
 -- describe any remaining adjustments needed before the film "Euclidean PI" can
 -- be removed from the film table.
+
+Select * from INFORMATION_SCHEMA.TABLES
+
+Select * from INFORMATION_SCHEMA.COLUMNS
+Select * from INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+Select * from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+Select * from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS
+
+
 I would have to delete all the occurences of "film_id 1001" from other tables.  The "film_actor" still references the "Euclidean PI film _Id"
