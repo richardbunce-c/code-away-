@@ -1,6 +1,7 @@
 ﻿using ProjectOrganizer.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,38 @@ namespace ProjectOrganizer.DAL
         /// <returns>A list of all employees.</returns>
         public IList<Employee> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            List<Employee> output = new List<Employee>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("Select * from employee", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Employee emp = new Employee();
+                        emp.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        emp.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        emp.FirstName = Convert.ToString(reader["first_name"]);
+                        emp.LastName = Convert.ToString(reader["last_name"]);
+                        emp.JobTitle = Convert.ToString(reader["job_title"]);
+                        emp.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        emp.Gender = Convert.ToString(reader["gender"]);
+                        emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
+
+                        output.Add(emp);
+                    }
+                }
+                return output;
+
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
+
+
         }
 
         /// <summary>
@@ -35,16 +67,73 @@ namespace ProjectOrganizer.DAL
         /// <returns>A list of employees that match the search.</returns>
         public IList<Employee> Search(string firstname, string lastname)
         {
-            throw new NotImplementedException();
-        }
+            List<Employee> output = new List<Employee>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand($"Select * from employee where first_name ='{firstname}' and last_name='{lastname}'", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Employee emp = new Employee();
+                        emp.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        emp.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        emp.FirstName = Convert.ToString(reader["first_name"]);
+                        emp.LastName = Convert.ToString(reader["last_name"]);
+                        emp.JobTitle = Convert.ToString(reader["job_title"]);
+                        emp.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        emp.Gender = Convert.ToString(reader["gender"]);
+                        emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
 
+                        output.Add(emp);
+                    }
+                    return output;
+                }
+            }
+            catch
+            {
+
+                throw new NotImplementedException();
+            }
+        }
         /// <summary>
         /// Gets a list of employees who are not assigned to any active projects.
         /// </summary>
         /// <returns></returns>
         public IList<Employee> GetEmployeesWithoutProjects()
         {
-            throw new NotImplementedException();
+            List<Employee> output = new List<Employee>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand($"Select * from employee where employee_id not in (select employee_id from project_employee) ", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Employee emp = new Employee();
+                        emp.EmployeeId = Convert.ToInt32(reader["employee_id"]);
+                        emp.DepartmentId = Convert.ToInt32(reader["department_id"]);
+                        emp.FirstName = Convert.ToString(reader["first_name"]);
+                        emp.LastName = Convert.ToString(reader["last_name"]);
+                        emp.JobTitle = Convert.ToString(reader["job_title"]);
+                        emp.BirthDate = Convert.ToDateTime(reader["birth_date"]);
+                        emp.Gender = Convert.ToString(reader["gender"]);
+                        emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
+
+                        output.Add(emp);
+                    }
+                    return output;
+                }
+            }
+            catch
+            {
+                throw new NotImplementedException();
+
+            }
         }
     }
 }

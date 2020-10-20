@@ -1,6 +1,7 @@
 ﻿using ProjectOrganizer.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,35 @@ namespace ProjectOrganizer.DAL
         public ProjectSqlDAO(string dbConnectionString)
         {
             connectionString = dbConnectionString;
+        }
+        public List<Project> GetAllProjects()
+        { 
+            List<Project> output = new List<Project>();
+            try
+            {
+                using (SqlConnection conn=new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("Select * from project;", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Project proj = new Project();
+                        proj.ProjectId = Convert.ToInt32(reader["project_id"]);
+                        proj.Name = Convert.ToString(reader["name"]);
+                        proj.StartDate = Convert.ToDateTime(reader["start_date"]);
+                        proj.EndDate = Convert.ToDateTime(reader["end_date"]);
+
+                        output.Add(proj);
+                    }
+                }
+                return output;
+            
+            }
+          catch (Exception)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>

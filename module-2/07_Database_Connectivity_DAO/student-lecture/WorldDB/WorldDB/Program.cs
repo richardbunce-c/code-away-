@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Threading;
 using WorldDB.DAL;
+using WorldDB.Models;
 using WorldDB.Views;
 
 namespace WorldDB
@@ -47,7 +50,50 @@ namespace WorldDB
 
         private static void ReadCities(string connectionString)
         {
+            try
+            {
+                Console.Write("Enter country code:");
+                string countryCode = Console.ReadLine();
+                //Create a list
+                List<City> cities = new List<City>();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    //Open the connection
+                    connection.Open();
 
+                    //Create a comand to contain our SQL statement
+                    string sql = $"Select * from City where countrycode = @countryCode";
+                    SqlCommand cmd = new SqlCommand(sql, connection);
+                    cmd.Parameters.AddWithValue("@countryCode", countryCode);
+
+                    //Execute the command and save the reference to the result set*
+                    SqlDataReader rdr= cmd.ExecuteReader();
+
+                    //Loop through each row in the result set
+                    while (rdr.Read())
+                    {
+                        //For this row, create a city object
+                        City city = new City();
+                        city.CityId = Convert.ToInt32 (rdr["CityId"]);
+                        city.CountryCode = Convert.ToString(rdr["CountryCode"]);
+                        city.District = Convert.ToString(rdr["District"]);
+                        city.Name = Convert.ToString(rdr["Name"]);
+                        city.Population = Convert.ToInt32(rdr["Population"]);
+
+                        cities.Add(city);
+                    }
+
+                }
+           //Now print the items in the list
+           foreach(City city in cities)
+                {
+                    Console.WriteLine($"{city.Name}, {city.District}");
+                }
+            }
+            catch(SqlException ex)
+            {
+                Console.WriteLine($"Error accessing database: {ex.Message}");
+            }
             Console.ReadLine();
         }
     }
