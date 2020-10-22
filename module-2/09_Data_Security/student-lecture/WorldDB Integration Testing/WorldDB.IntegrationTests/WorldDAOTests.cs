@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics.SymbolStore;
 using System.IO;
 using System.Transactions;
 
@@ -21,7 +22,6 @@ namespace WorldDB.IntegrationTests
         /// The transaction for each test.
         /// </summary>
         private TransactionScope transaction;
-
         [TestInitialize]
         public void Setup()
         {
