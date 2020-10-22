@@ -18,7 +18,7 @@ namespace SQLInjection.DAL
         {
             try
             {
-                return SearchPlayerTheLAZYWay(name);
+                return SearchPlayerThePROPERWay(name);
             }
             catch (SqlException)
             {
