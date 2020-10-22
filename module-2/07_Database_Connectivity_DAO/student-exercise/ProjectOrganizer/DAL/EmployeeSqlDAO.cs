@@ -67,17 +67,22 @@ namespace ProjectOrganizer.DAL
         /// <returns>A list of employees that match the search.</returns>
         public IList<Employee> Search(string firstname, string lastname)
         {
-            List<Employee> output = new List<Employee>();
+            List<Employee> list = new List<Employee>();
+
+            string sql = "Select * from employee where first_name like @firstName and last_name like @lastName";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($"Select * from employee where first_name ='{firstname}' and last_name='{lastname}'", conn);
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@firstName", $"%{firstname}%");
+                    cmd.Parameters.AddWithValue("@lastName", $"%{lastname}%");
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         Employee emp = new Employee();
+                  
                         emp.EmployeeId = Convert.ToInt32(reader["employee_id"]);
                         emp.DepartmentId = Convert.ToInt32(reader["department_id"]);
                         emp.FirstName = Convert.ToString(reader["first_name"]);
@@ -87,9 +92,10 @@ namespace ProjectOrganizer.DAL
                         emp.Gender = Convert.ToString(reader["gender"]);
                         emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
 
-                        output.Add(emp);
+                        list.Add(emp);
+
                     }
-                    return output;
+                    return list;
                 }
             }
             catch
@@ -97,6 +103,7 @@ namespace ProjectOrganizer.DAL
 
                 throw;
             }
+            ;
         }
         /// <summary>
         /// Gets a list of employees who are not assigned to any active projects.
