@@ -24,7 +24,7 @@ namespace ProjectOrganizer.DAL
         /// <returns>A list of all employees.</returns>
         public IList<Employee> GetAllEmployees()
         {
-            List<Employee> output = new List<Employee>();
+            List<Employee> list = new List<Employee>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -44,15 +44,15 @@ namespace ProjectOrganizer.DAL
                         emp.Gender = Convert.ToString(reader["gender"]);
                         emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
 
-                        output.Add(emp);
+                        list.Add(emp);
                     }
                 }
-                return output;
+                return list;
 
             }
             catch
             {
-                throw new NotImplementedException();
+                throw;
             }
 
 
@@ -95,7 +95,7 @@ namespace ProjectOrganizer.DAL
             catch
             {
 
-                throw new NotImplementedException();
+                throw;
             }
         }
         /// <summary>
@@ -104,13 +104,13 @@ namespace ProjectOrganizer.DAL
         /// <returns></returns>
         public IList<Employee> GetEmployeesWithoutProjects()
         {
-            List<Employee> output = new List<Employee>();
+            List<Employee> list = new List<Employee>();
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand($"Select * from employee where employee_id not in (select employee_id from project_employee) ", conn);
+                    SqlCommand cmd = new SqlCommand("Select * from employee where employee_id not in (SELECT employee_id FROM project_employee);", conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -124,14 +124,14 @@ namespace ProjectOrganizer.DAL
                         emp.Gender = Convert.ToString(reader["gender"]);
                         emp.HireDate = Convert.ToDateTime(reader["hire_date"]);
 
-                        output.Add(emp);
+                        list.Add(emp);
                     }
-                    return output;
+                    return list;
                 }
             }
             catch
             {
-                throw new NotImplementedException();
+                throw;
 
             }
         }
