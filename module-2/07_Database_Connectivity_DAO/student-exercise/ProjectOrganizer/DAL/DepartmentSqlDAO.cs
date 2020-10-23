@@ -66,7 +66,7 @@ namespace ProjectOrganizer.DAL
         /// </summary>
         /// <param name="newDepartment">The department object.</param>
         /// <returns>The id of the new department (if successful).</returns>
-        public int CreateDepartment(Department newDepartment)
+        public int EqualsCreateDepartment(Department newDepartment)
         {
             //Create the sql to insert a new row into the Department table
             string sql = "Insert into Department (name) values (@deptName); Select @@Identity;";
@@ -94,6 +94,10 @@ namespace ProjectOrganizer.DAL
                 throw;
             }
         }
+
+    
+
+
 
         /// <summary>
         /// Updates an existing department.

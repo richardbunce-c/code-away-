@@ -20,7 +20,7 @@ namespace ProjectOrganizer.DAL
         /// </summary>
         /// <param name="newDepartment">The department object to create.</param>
         /// <returns>The id of the new department.</returns>
-        int CreateDepartment(Department newDepartment);
+        int EqualsCreateDepartment(Department newDepartment);
 
         /// <summary>
         /// Updates an existing department.

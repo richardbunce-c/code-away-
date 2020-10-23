@@ -41,10 +41,9 @@ Values(@proj1, @emp1),
 (@proj1, @emp2),
 (@proj2, @emp2)
 
+--Return values to the test program that we need to use in tests
+Select @dept1 as dept1, @emp1 as emp1, @emp2 as emp2, @proj1 as proj1
 ---Warning:This line should be uncommented if run within ssms!!!
-Select * from project_employee
-Select * from employee
-Select * from project
-Select * from department
+
 
 --Rollback Tran

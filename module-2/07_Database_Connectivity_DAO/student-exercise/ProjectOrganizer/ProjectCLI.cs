@@ -190,7 +190,7 @@ namespace ProjectOrganizer
                 Name = departmentName
             };
 
-            int id = departmentDAO.CreateDepartment(newDept);
+            int id = departmentDAO.EqualsCreateDepartment(newDept);
 
             if (id > 0)
             {
