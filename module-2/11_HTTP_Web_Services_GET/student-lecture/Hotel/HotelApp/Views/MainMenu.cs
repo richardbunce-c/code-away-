@@ -13,6 +13,7 @@ namespace HTTP_Web_Services_GET_lecture.Views
         public MainMenu(string apiUrl)
         {
             // TODO: Create the RestClient here...
+            client = new RestClient(apiUrl);
 
             AddOption("List Hotels", ListHotels)
                 .AddOption("List Reviews", ListReviews)
@@ -30,39 +31,85 @@ namespace HTTP_Web_Services_GET_lecture.Views
         private MenuOptionResult ListHotels()
         {
             // Call the api to get hotels (/hotels)
-            Console.WriteLine("Not Implemented");
 
+            //Create a request for this endpoint
+            RestRequest request = new RestRequest("hotels");
+
+            //Send HTTP GET Request
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine("There was an error getting hotels!");
+                return MenuOptionResult.WaitAfterMenuSelection;
+            }
+
+            PrintHotels(response.Data);
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
         private MenuOptionResult ListReviews()
         {
             // Call the api to get hotels (/reviews)
-            Console.WriteLine("Not Implemented");
+            RestRequest request = new RestRequest("reviews");
 
+            IRestResponse<List<Review>> response = client.Get<List<Review>>(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine("There was an error getting reviews!");
+                return MenuOptionResult.WaitAfterMenuSelection;
+            }
+            PrintReviews(response.Data);
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
         private MenuOptionResult HotelDetails()
         {
             // Call the api to get hotels (/hotels/{id})
-            Console.WriteLine("Not Implemented");
 
+            //Ask the user for the hotel id
+            int hotelId = GetInteger("Hotel Id: ");
+            //Create the request
+            RestRequest request = new RestRequest($"/hotels/{hotelId}");
+            //Send http request
+            IRestResponse<Hotel> response = client.Get<Hotel>(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Could not get details for hotel {hotelId}!");
+                return MenuOptionResult.WaitAfterMenuSelection;
+            }
+            PrintHotel(response.Data);
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
         private MenuOptionResult HotelReviews()
         {
             // Call the api to get hotels (/hotels/{id}/reviews)
-            Console.WriteLine("Not Implemented");
-
+            int hotelId = GetInteger("Hotel Id: ");
+            RestRequest request = new RestRequest($"/hotels/{hotelId}/reviews");
+            IRestResponse<List<Review>> response = client.Get<List<Review>>(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Could not get details for hotel {hotelId}!");
+                return MenuOptionResult.WaitAfterMenuSelection;
+            }
+            PrintReviews(response.Data);
             return MenuOptionResult.WaitAfterMenuSelection;
         }
 
         private MenuOptionResult GetHotelsForRating()
         {
             // Call the api to get hotels (/hotels?stars={stars})
-            Console.WriteLine("Not Implemented");
+            // Call the api to get hotels (/hotels/{id}/reviews)
+            int stars = GetInteger("How many stars: ");
+            RestRequest request = new RestRequest($"/hotels?stars={stars}");
+            IRestResponse<List<Hotel>> response = client.Get<List<Hotel>>(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Could not get hotels with {stars} rating!");
+                return MenuOptionResult.WaitAfterMenuSelection;
+            }
+            PrintHotels(response.Data);
 
             return MenuOptionResult.WaitAfterMenuSelection;
         }
