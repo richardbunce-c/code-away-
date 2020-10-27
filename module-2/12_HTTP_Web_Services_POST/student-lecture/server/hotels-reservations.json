@@ -2,18 +2,18 @@
   "hotels": [
     {
       "Id": 1,
-      "name": "Aloft Cleveland",
+      "name": "Aloft Cleveland Hotel",
       "address": {
         "id": "44144a78-725b-47bf-9516-fe9a9d65fbb2",
-        "address": "1111 W 10th St",
+        "address": "2222 W 10th St",
         "address2": "",
         "city": "Cleveland",
         "state": "Ohio",
         "zip": "44113"
       },
       "stars": 3,
-      "roomsAvailable": 48,
-      "costPerNight": 274,
+      "roomsAvailable": 20,
+      "costPerNight": 350,
       "coverImage": "aloft-cleveland.webp"
     },
     {

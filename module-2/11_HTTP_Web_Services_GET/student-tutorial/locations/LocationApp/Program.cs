@@ -6,12 +6,46 @@ namespace LocationApp
 {
     class Program
     {
+        const string API_URL = "http://localhost:3000/locations";
         static void Main(string[] args)
         {
             Run();
         }
         private static void Run()
         {
+            int id;
+            int menuSelection;
+            PrintGreeting();
+            if(!int.TryParse(Console.ReadLine(), out menuSelection))
+            {
+                Console.WriteLine("Invalid input. Only input a number.");
+            }
+       if (menuSelection==1)
+            {
+                //List locations
+            }
+            else
+            {
+                Environment.Exit(0);
+            }
+            if (menuSelection == 1)
+            {
+                RestClient client = new RestClient();
+                RestRequest request = new RestRequest(API_URL);
+                IRestResponse<List<Location>> response = client.Get<List<Location>>(request);
+                PrintLocations(response.Data);
+            }
+                
+                if (!int.TryParse(Console.ReadLine(), out id))
+                {
+                    Console.WriteLine("Invalid input. Only input a number.");
+                }
+            if (id>0 && id <= response.Data.Count)
+            {
+                RestRequest requestOne = new RestRequest(API_URL + "/" + id);
+                IRestResponse<Location> location = RestClient.Get<Location>(requestOne);
+                PrintLocation(location.Data);
+            }
         }
 
         private static void PrintGreeting()

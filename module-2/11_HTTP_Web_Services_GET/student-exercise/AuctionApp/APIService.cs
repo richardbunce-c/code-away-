@@ -35,7 +35,7 @@ namespace AuctionApp
         public List<Auction> GetAuctionsSearchTitle(string searchTitle)
         {
             RestClient client = new RestClient(API_URL);
-            RestRequest request = new RestRequest($"?searchTitle={searchTitle}");
+            RestRequest request = new RestRequest($"/auctions/?title_like={searchTitle}");
             IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
 
             return response.Data;
@@ -44,7 +44,7 @@ namespace AuctionApp
         public List<Auction> GetAuctionsSearchPrice(double searchPrice)
         {
             RestClient client = new RestClient(API_URL);
-            RestRequest request = new RestRequest($"?searchPrice={searchPrice}");
+            RestRequest request = new RestRequest($"/auctions/?currentBid_lte={searchPrice}");
             IRestResponse<List<Auction>> response = client.Get<List<Auction>>(request);
 
             return response.Data;
