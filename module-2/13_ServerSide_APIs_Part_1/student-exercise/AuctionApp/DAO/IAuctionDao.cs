@@ -5,7 +5,7 @@ namespace AuctionApp.DAO
 {
     public interface IAuctionDao
     {
-        List<Auction> List();
+        List<Auction> List(string title_like);
 
         Auction Get(int id);
 
@@ -16,5 +16,7 @@ namespace AuctionApp.DAO
         List<Auction> SearchByPrice(double maxPrice);
 
         List<Auction> SearchByTitleAndPrice(string searchTerm, double maxPrice);
+        List<Auction> List();
+        List<Auction> SearchByTitleAndPrice();
     }
 }

@@ -40,16 +40,16 @@ namespace HotelReservations.Controllers
 
         // TODO 03: Return 404 if the Id is not found (using NotFound()). Change return type to ActionResult<>
         [HttpGet("{id}")]
-        public Hotel GetHotel(int id)
+        public ActionResult<Hotel> GetHotel(int id)
         {
             Hotel hotel = hotelDao.Get(id);
 
-            if (hotel != null)
+            if (hotel == null)
             {
-                return hotel;
+                return NotFound();
             }
 
-            return null;
+            return Ok(hotel);
         }
 
 

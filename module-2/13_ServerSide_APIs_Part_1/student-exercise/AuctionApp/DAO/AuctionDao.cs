@@ -99,5 +99,15 @@ namespace AuctionApp.DAO
 
             return matches;
         }
+
+        public List<Auction> List(string title_like)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Auction> SearchByTitleAndPrice()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

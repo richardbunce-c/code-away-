@@ -73,6 +73,10 @@ namespace HotelReservations.Controllers
         [HttpPost]
         public ActionResult<Reservation> AddReservation(Reservation reservation)
         {
+            if (reservation.CheckinDate>=reservation.CheckoutDate)
+            {
+                return BadRequest("Checkout date must be beyond Checkin date.");
+            }
             Reservation res = reservationDao.Create(reservation);
             return Created($"/reservations/{res.Id}", res);
         }
