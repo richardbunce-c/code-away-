@@ -9,5 +9,8 @@ namespace HotelReservations.Dao
         List<Reservation> FindByHotel(int hotelId);
         Reservation Get(int id);
         List<Reservation> List();
+
+        Reservation Update(Reservation res);
+        bool Delete(int id);
     }
 }

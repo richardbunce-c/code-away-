@@ -22,5 +22,28 @@ namespace AuctionApp.Controllers
                 dao = auctionDao;
             }
         }
+        //Get a list of all reservations in the system
+        [HttpGet]
+        public List<Auction> List()
+        {
+            return dao.List();
+        }
+        [HttpGet("{id}")]
+        public ActionResult<Auction> Get(int id)
+        {
+            Auction auc = dao.Get(id);
+            if (auc == null)
+            {
+                return NoContent();
+            }
+            return auc;
+        }
+
+        [HttpPost()]
+        public ActionResult<Auction> Create(Auction auction)
+        {
+            Auction auc = dao.Create(auction);
+            return Created($"/auctions/{auc.Id}", auc);
+        }
     }
 }

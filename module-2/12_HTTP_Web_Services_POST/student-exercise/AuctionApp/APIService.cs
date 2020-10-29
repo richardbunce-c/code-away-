@@ -141,7 +141,7 @@ namespace AuctionApp
 
             if (response.ResponseStatus != ResponseStatus.Completed)
             {
-                throw new Exception("Error occurred - unable to reach servder");
+                throw new Exception("Error occurred - unable to reach server");
             }
             else if (!response.IsSuccessful)
             {

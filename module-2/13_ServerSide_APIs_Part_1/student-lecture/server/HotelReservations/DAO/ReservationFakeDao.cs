@@ -1,4 +1,5 @@
 ﻿using HotelReservations.Models;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,32 @@ namespace HotelReservations.Dao
             reservation.Id = maxId + 1;
             Reservations.Add(reservation);
             return reservation;
+        }
+
+        public Reservation Update(Reservation res)
+        {
+            // Find the existing reservation in the DB
+            Reservation oldRes = Get(res.Id.Value);
+            if (oldRes != null) ;
+            {
+                oldRes.Guests = res.Guests;
+                oldRes.CheckinDate = res.CheckinDate;
+                oldRes.CheckoutDate = res.CheckoutDate;
+                oldRes.FullName = res.FullName;
+            }
+            return oldRes;
+        }
+   
+ 
+
+        public Reservation Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IReservationDao.Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
