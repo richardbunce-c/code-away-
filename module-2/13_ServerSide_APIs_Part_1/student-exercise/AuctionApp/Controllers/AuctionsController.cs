@@ -57,15 +57,21 @@ namespace AuctionApp.Controllers
         [HttpGet]
         public List<Auction> SearchByTitleAndPrice(string title_like = "", double currentBid_lte = 0)
         {
-            if (title_like != "")
+            //If both params are passed, call the right method and return the value
+            if (!string.IsNullOrEmpty(title_like) && currentBid_lte >0)
+            {
+                return dao.SearchByTitleAndPrice(title_like, currentBid_lte);
+            }
+
+            //OK, they did not pass bothparams.  Did they pass one or the other?
+            if (!string.IsNullOrEmpty(title_like))
             {
                 return dao.SearchByTitle(title_like);
             }
-            if (currentBid_lte > 0)
+            if (currentBid_lte>0)
             {
                 return dao.SearchByPrice(currentBid_lte);
             }
-
             return dao.List();
         }
 
