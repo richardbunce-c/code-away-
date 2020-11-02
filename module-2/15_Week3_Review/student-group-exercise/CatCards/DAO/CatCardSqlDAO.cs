@@ -1,4 +1,5 @@
 ﻿using CatCards.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -19,8 +20,9 @@ namespace CatCards.DAO
         /// <summary>
         /// Constructor.  Needs a connection string to connect to a database.
         /// </summary>
-        public CatCardSqlDAO()
+        public CatCardSqlDAO(string connectionString)
         {
+            this.connectionString = connectionString;
         }
 
         /// <summary>
@@ -30,8 +32,34 @@ namespace CatCards.DAO
         /// <returns>The added card</returns>
         public CatCard AddCard(CatCard addedCard)
         {
-            throw new NotImplementedException();
+            string sql = "Insert catcards(img_url, fact, caption) Values (@img_url, @fact,@caption); Select * from catcards where id =@@identity;";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(sql, connection);
+                    cmd.Parameters.AddWithValue("@img_url", addedCard.ImgUrl);
+                    cmd.Parameters.AddWithValue("@fact", addedCard.CatFact);
+                    cmd.Parameters.AddWithValue("@caption", addedCard.Caption);
+
+
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    //Loop the rows and create the objects
+                  if(rdr.Read())
+                    {
+                        return RowToObject(rdr);
+                    }
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
         }
+    }
 
         /// <summary>
         /// List all cards in the DB
@@ -39,9 +67,42 @@ namespace CatCards.DAO
         /// <returns>A list of all saved CatCards.</returns>
         public List<CatCard> GetAllCards()
         {
-            throw new NotImplementedException();
-        }
+            string sql = "Select * from catcards";
+            List<CatCard> list = new List<CatCard>();
+            try
+            {
+                using (SqlConnection connection= new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(sql, connection);
 
+                    SqlDataReader rdr= cmd.ExecuteReader();
+                
+                //Loop the rows and create the objects
+                while (rdr.Read())
+                    {
+                        list.Add(RowToObject(rdr));
+                    }
+                    return list;
+                }
+            }
+       catch (SqlException ex)
+            {
+                throw;
+            }
+            }
+        private CatCard RowToObject(SqlDataReader rdr)
+        {
+            CatCard card = new CatCard();
+
+            card.CatCardId = Convert.ToInt32(rdr["id"]);
+            card.ImgUrl = Convert.ToString(rdr["id"]);
+            card.CatFact = Convert.ToString(rdr["id"]);
+            card.Caption = Convert.ToString(rdr["id"]);
+
+
+
+        }
         /// <summary>
         /// Get a single CatCard from the DB based on an id
         /// </summary>
@@ -59,9 +120,45 @@ namespace CatCards.DAO
         /// <returns></returns>
         public CatCard GetRandomCatCard()
         {
-            throw new NotImplementedException();
-        }
+            //Create an empty catCard
+            CatCard card = new CatCard();
+            //Call the cat fact api to fill in fact property
+           card.CatFact=GetRandomCatFact().Text
+            //Call the cat pic api to fill in the pic property
+         
 
+            return card;
+        }
+        private CatFactResponse GetRandomCatFact()
+        {
+            RestClient client = new RestClient();
+            RestRequest request = new RestRequest(catFactApiUrl);
+            IRestResponse<CatFactResponse> response = client.Get<CatFactResponse>(request);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new Exception("The cat fact server coult not be reached");
+            }
+            if (!response.IsSuccessful)
+            {
+                throw new Exception($"Error getting cat fact: {response.StatusCode}");
+            }
+            return response.Data;
+        }
+        private CatPicResponse GetRandomCatPic()
+        {
+            RestClient client = new RestClient();
+            RestRequest request = new RestRequest(catPicApiUrl);
+            IRestResponse<CatPicResponse> response = client.Get<CatPicResponse>(request);
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new Exception("The cat fact server coult not be reached");
+            }
+            if (!response.IsSuccessful)
+            {
+                throw new Exception($"Error getting cat fact: {response.StatusCode}");
+            }
+            return response.Data;
+        }
         /// <summary>
         /// Deletes from the DB the card with the specified id
         /// </summary>

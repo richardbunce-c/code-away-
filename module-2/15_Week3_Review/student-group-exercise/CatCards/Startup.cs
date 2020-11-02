@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CatCards.DAO;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,10 @@ namespace CatCards
             string connectionString = Configuration.GetConnectionString("Project");
 
             // Dependency Injection configuration
-
+            services.AddTransient<ICatCardDao, CatCardSqlDAO>(sp =>
+            { 
+                return new CatCardSqlDAO(connectionString);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

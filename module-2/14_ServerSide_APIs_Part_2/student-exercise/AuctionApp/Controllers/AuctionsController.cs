@@ -9,11 +9,12 @@ namespace AuctionApp.Controllers
     [ApiController]
     public class AuctionsController : ControllerBase
     {
-        private readonly IAuctionDao dao;
+        private IAuctionDao auctionDao;
+        
 
         public AuctionsController(IAuctionDao auctionDao)
         {
-            dao = auctionDao;
+          this.auctionDao = auctionDao;
         }
 
         [HttpGet]
@@ -21,36 +22,60 @@ namespace AuctionApp.Controllers
         {
             if (title_like != "")
             {
-                return dao.SearchByTitle(title_like);
+                return auctionDao.SearchByTitle(title_like);
             }
             if (currentBid_lte > 0)
             {
-                return dao.SearchByPrice(currentBid_lte);
+                return auctionDao.SearchByPrice(currentBid_lte);
             }
 
-            return dao.List();
+            return auctionDao.List();
         }
 
         [HttpGet("{id}")]
         public ActionResult<Auction> Get(int id)
         {
-            Auction auction = dao.Get(id);
-            if (auction != null)
+            Auction auction = auctionDao.Get(id);
+            if (auction == null)
             {
-                return Ok(auction);
+                return NotFound();
             }
             else
             {
-                return NotFound();
+                return auction;
             }
         }
 
         [HttpPost]
         public ActionResult<Auction> Create(Auction auction)
         {
-            return dao.Create(auction);
+            Auction auc= auctionDao.Create(auction);
+        
+            return Created($"/auctions/{auc.Id}", auc);
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult DeleteAuction(int id)
+        {
+            if (auctionDao.Delete(id))
+            {
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        [HttpPut("{id}")]
+        public ActionResult Update(int id, Auction auction)
+        {
+            if (id != auction.Id)
+            {
+                return BadRequest("The id in the url does not match the id in the body");
+            }
+            return BadRequest();
+          
+        }
 
     }
 }

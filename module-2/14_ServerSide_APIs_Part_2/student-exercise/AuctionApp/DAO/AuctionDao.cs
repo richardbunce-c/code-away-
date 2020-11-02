@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AuctionApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionApp.DAO
 {
@@ -110,6 +111,16 @@ namespace AuctionApp.DAO
             }
 
             return matchPrices;
+        }
+
+        public bool Update(Auction auction)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

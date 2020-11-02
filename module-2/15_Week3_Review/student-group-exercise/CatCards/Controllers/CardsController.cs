@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using CatCards.DAO;
+using CatCards.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CatCards.Controllers
@@ -15,11 +17,33 @@ namespace CatCards.Controllers
     ///  
     /// </summary>
     [ApiController]
+    [Route("api/cards")]
     public class CardsController : ControllerBase
     {
-        public CardsController()
+        private ICatCardDao cardDao;
+        public CardsController(ICatCardDao cardDao)
         {
+          this.cardDao = cardDao;
+        }
+        
+        [HttpGet]
+        public List<CatCard> GetAllCards()
+        {
+            return cardDao.GetAllCards();
+        }
+        public ActionResult<CatCard> AddCard(CatCard card)
+        {
+            CatCard newCard = cardDao.AddCard(card);
+            string urlOfNewCard = $"/api/cards/{newCard CatCardId}";
+            return Created(urlOfNewCard, newCard);
         }
 
+        [HttpGet("random")]
+        public CatCard GetRandom()
+        {
+            // Go to the DAO and ask for a new card
+            return cardDao.GetRandomCatCard();
+        }
+   
     }
 }

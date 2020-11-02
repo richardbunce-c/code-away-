@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AuctionApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AuctionApp.DAO
 {
@@ -18,5 +19,6 @@ namespace AuctionApp.DAO
         List<Auction> SearchByTitle(string searchTerm);
 
         List<Auction> SearchByPrice(double maxPrice);
+     
     }
 }
