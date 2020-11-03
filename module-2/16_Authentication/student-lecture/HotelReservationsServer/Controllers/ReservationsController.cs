@@ -1,5 +1,6 @@
 ﻿using HotelReservations.Dao;
 using HotelReservations.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -40,6 +41,7 @@ namespace HotelReservations.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles ="admin")]
         public List<Reservation> GetAllReservations()
         {
             return reservationDao.List();
@@ -51,6 +53,7 @@ namespace HotelReservations.Controllers
         /// <param name="reservationId"></param>
         /// <returns></returns>
         [HttpGet("{reservationId}")]
+        [Authorize]
         public ActionResult<Reservation> GetReservation(int reservationId)
         {
             Reservation res = reservationDao.Get(reservationId);
@@ -63,11 +66,13 @@ namespace HotelReservations.Controllers
         }
 
         [HttpGet("/hotels/{hotelId}/reservations")]
+        [Authorize(Roles ="admin, creator")]
         public List<Reservation> GetReservationsForHotel(int hotelId)
         {
             return reservationDao.FindByHotel(hotelId);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult<Reservation> AddReservation(Reservation reservation)
         {
@@ -76,12 +81,14 @@ namespace HotelReservations.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public Reservation UpdateReservation(Reservation reservation)
         {
             return reservationDao.Update(reservation);
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteReservation(int id)
         {
             if (reservationDao.Delete(id))

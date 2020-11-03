@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AuctionApp.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class AuctionsController : ControllerBase
@@ -19,7 +20,7 @@ namespace AuctionApp.Controllers
             else
                 _dao = auctionDao;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public List<Auction> List(string title_like = "", double currentBid_lte = 0)
         {
@@ -34,7 +35,7 @@ namespace AuctionApp.Controllers
 
             return _dao.List();
         }
-
+       
         [HttpGet("{id}")]
         public ActionResult<Auction> Get(int id)
         {
@@ -48,14 +49,14 @@ namespace AuctionApp.Controllers
                 return NotFound();
             }
         }
-
+        [Authorize(Roles ="creator, admin")]
         [HttpPost]
         public ActionResult<Auction> Create(Auction auction)
         {
             Auction returnAuction = _dao.Create(auction);
             return Created($"/auctions/{returnAuction.Id}", returnAuction);
         }
-
+        [Authorize(Roles ="creator, admin")]
         [HttpPut("{id}")]
         public ActionResult<Auction> Update(int id, Auction auction)
         {
@@ -68,7 +69,7 @@ namespace AuctionApp.Controllers
             Auction result = _dao.Update(id, auction);
             return Ok(result);
         }
-
+        [Authorize(Roles ="admin")]
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
@@ -92,7 +93,7 @@ namespace AuctionApp.Controllers
         [HttpGet("whoami")]
         public ActionResult WhoAmI()
         {
-            return Ok("");
+            return Ok();
         }
     }
 }

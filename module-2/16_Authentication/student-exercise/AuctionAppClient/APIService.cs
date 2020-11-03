@@ -3,6 +3,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace AuctionApp
 {
@@ -138,23 +139,35 @@ namespace AuctionApp
             return false;
         }
 
-        public void ProcessErrorResponse(IRestResponse response)
+        protected void ProcessErrorResponse(IRestResponse response)
         {
             if (response.ResponseStatus != ResponseStatus.Completed)
             {
-                throw new NoResponseException("Error occurred - unable to reach server.");
+                throw new Exception("Error occurred - unable to reach server.");
             }
-            else if (!response.IsSuccessful)
-            {
 
+            if (!response.IsSuccessful)
+            {
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new Exception("Authorization is required for this option. Please log in.");
+                }
+                if (response.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    throw new Exception("You do not have permission to perform the requested action");
+                }
+
+                throw new Exception($"Error occurred - received non-success response: {response.StatusCode} ({(int)response.StatusCode})");
             }
         }
 
         public API_User Login(string submittedName, string submittedPass)
         {
+            var credentials = new { username = submittedName, password = submittedPass };
+            RestRequest request = new RestRequest("login");
+            request.AddJsonBody(credentials);
 
-
-            IRestResponse<API_User> response = null;
+            IRestResponse<API_User> response = client.Post<API_User>(request);
 
             if (response.ResponseStatus != ResponseStatus.Completed)
             {

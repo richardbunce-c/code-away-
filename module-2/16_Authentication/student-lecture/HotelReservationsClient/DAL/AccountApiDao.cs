@@ -22,6 +22,8 @@ namespace HotelReservationsClient.DAL
 
             // TODO 12: If the login succeeeds, create the User object and add a new Authenticator 
             //  to the client for subsequent calls
+            User = response.Data;
+            client.Authenticator = new JwtAuthenticator(User.Token);
 
             return true;
         }
@@ -30,7 +32,8 @@ namespace HotelReservationsClient.DAL
         // TODO 13: To log out, we simply "forget" the token.  There is no need to contact the server.
         public void Logout()
         {
-
+            client.Authenticator = null;
+            User = null;
         }
 
     }

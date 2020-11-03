@@ -54,8 +54,14 @@ namespace HotelReservationsClient.Views
             SetColor(ConsoleColor.Green);
 
             // TODO 14: Display the logged in user name
-
-
+            if (accountDao.LoggedIn)
+            {
+                Console.WriteLine($"Current User: {accountDao.User.Username}");
+            }
+            else
+            {
+                Console.WriteLine("** Not logged in **");
+            }
             ResetColor();
         }
 
