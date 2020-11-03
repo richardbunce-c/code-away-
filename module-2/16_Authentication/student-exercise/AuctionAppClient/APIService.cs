@@ -41,6 +41,11 @@ namespace AuctionApp
             return null;
         }
 
+        private void ProcessErrorResponse(IRestResponse<List<Auction>> response)
+        {
+            throw new NotImplementedException();
+        }
+
         public Auction GetDetailsForAuction(int auctionId)
         {
             RestRequest requestOne = new RestRequest(AUCTIONS_URL + "/" + auctionId);
@@ -55,6 +60,30 @@ namespace AuctionApp
                 return response.Data;
             }
             return null;
+        }
+
+       
+
+        public void ProcessErrorResponse(RestResponse<Auction> response)
+        {
+            if (response.ResponseStatus != ResponseStatus.Completed)
+            {
+                throw new Exception("Error occurred - unable to reach server.");
+            }
+
+            if (!response.IsSuccessful)
+            {
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedException("Authorization is required for this option. Please log in.");
+                }
+                if (response.StatusCode == HttpStatusCode.Forbidden)
+                {
+                    throw new ForbiddenException("You do not have permission to perform the requested action");
+                }
+
+                throw new NonSuccessException($"Error occurred - received non-success response: {response.StatusCode} ({(int)response.StatusCode})");
+            }
         }
 
         public List<Auction> GetAuctionsSearchTitle(string searchTitle)
@@ -146,25 +175,24 @@ namespace AuctionApp
                 throw new Exception("Error occurred - unable to reach server.");
             }
 
-            if (!response.IsSuccessful)
+            else if (!response.IsSuccessful)
             {
-                if (response.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw new Exception("Authorization is required for this option. Please log in.");
-                }
                 if (response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    throw new Exception("You do not have permission to perform the requested action");
+                    throw new ForbiddenException("");
                 }
-
-                throw new Exception($"Error occurred - received non-success response: {response.StatusCode} ({(int)response.StatusCode})");
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedException();
+                }
+                throw new NonSuccessException($"Error occurred - received non-success response: {response.StatusCode} ({(int)response.StatusCode})");
             }
         }
 
         public API_User Login(string submittedName, string submittedPass)
         {
             var credentials = new { username = submittedName, password = submittedPass };
-            RestRequest request = new RestRequest("login");
+            RestRequest request = new RestRequest($"{API_BASE_URL}login");
             request.AddJsonBody(credentials);
 
             IRestResponse<API_User> response = client.Post<API_User>(request);
@@ -186,9 +214,10 @@ namespace AuctionApp
             }
             else
             {
-                user.Token = response.Data.Token;
-
-                return response.Data;
+                //user.Token = response.Data.Token;
+                user = response.Data;
+                client.Authenticator = new JwtAuthenticator(user.Token);
+                return user; /*response.Data;*/
             }
         }
 

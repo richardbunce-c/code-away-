@@ -93,7 +93,11 @@ namespace AuctionApp.Controllers
         [HttpGet("whoami")]
         public ActionResult WhoAmI()
         {
-            return Ok();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Ok(User.Identity.Name);
+            }
+            return Ok("User Not Authenticated");
         }
     }
 }
