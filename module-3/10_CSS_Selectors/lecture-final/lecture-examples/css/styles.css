@@ -1,0 +1,216 @@
+/* universal selector */
+/* * {
+    color: blue;
+} */
+
+/* element selector */
+/* h1 {
+    font-size: 50px;
+    color: red;
+} */
+
+/* id selector */
+/* #subheading {
+    color: orange;
+} */
+
+
+/* class selector */
+/* .heading {
+    font-style: italic;
+}
+
+.fontred {
+    color: red;
+} */
+
+/* combining  */
+/* h2#subheading {
+    color:  hotpink;
+} */
+
+/* multiple selectors */
+/* h1, ol {
+    color:  orange;
+} */
+
+/* descendant selector */
+/* div li {
+    color: blue;
+} */
+
+/* child selector */
+/* div > ol {
+    color: magenta;
+} */
+
+/* NOT a child so doesn't select */
+/* div > li {
+    color: magenta;
+} */
+
+/* attribute selector */
+/* ol[start="30"] {
+    color: yellow;
+} */
+
+/* pseudo-class selector */
+/* li:hover {
+    background-color: gray;
+} */
+
+/* padding */
+/* h1 { */
+    /* background-color: gray; */
+    /* padding: 10px; */
+    /* padding-top: 20px; */
+
+    /* top-right-bottom-left */
+    /* padding: 10px 0px 30px 90px; */
+
+    /* top/bottom right/left */
+    /* padding: 20px 50px; */
+
+    /* top right/left bottom */
+    /* padding: 20px 30px 70px; */
+    /* width: 20%
+    
+} */
+
+/* margin */
+/* h1 {  */
+    /* background-color: gray; */
+    /* margin: 30px */
+
+    /* margin-top: 100px;
+    margin-left: 50px; */
+
+    /* top-right-bottom-left */
+    /* margin: 20px 50px 60px 30px; */
+
+    /* top/bottom right/left */
+    /* margin: 20px 50px; */
+
+    /* top right/left bottom */
+    /* margin: 20px 30px 70px;
+} */
+
+/* border */
+/* h1 {
+    border-style: solid;
+    border-width: 20px;
+    padding-left: 50px;
+    margin-top: 50px;
+} */
+
+/* block */
+/* .blockitem {
+    background-color: papayawhip;
+    display: block;
+    width: 50%;
+} */
+
+/* inline */
+/* .blockitem {
+    background-color: purple;
+    color: white;
+    display: inline;
+    padding: 20px;
+    margin: 10px; */
+    /* height / width not allowed */
+    /* width: 300px;
+} */
+
+/* inline- block */
+/* .blockitem {
+    
+    color: white;
+    display: inline-block;
+    width: 300px;
+    padding: 20px;
+} */
+
+/* display:none */
+/* .blockitem {
+    background-color: purple; */
+    /* this will hide the element */
+    /* display: none;
+} */
+
+/* relative positon */
+/* #relitem {
+    font-size: 50px;
+    position: relative;
+    left: 20px;
+} */
+
+
+/* absolute to view port */
+/* #absitem {
+    font-size: 30px;
+    position: absolute;
+    top: 200px;
+} */
+
+
+/* absolute to closest relative ancestor */
+/* #relitem {
+    font-size: 50px;
+    position: relative;
+    left: 20px;
+}
+
+#absitem {
+    font-size: 30px;
+    position: absolute;
+    top: 200px;
+} */
+
+/* dispaly: fixed - element stays put even if screen scrolls, etc. */
+/* inline-bllock elemets too long */
+/* .blockitem {
+    display: inline-block;
+    background-color: palevioletred;
+    width: 600px;
+} */
+
+/* force no wrap */
+/* body {
+    white-space: nowrap;
+} */
+
+/* display: fixed */
+/* #subheading {
+    position: fixed;
+    left: 200px;
+    top: 250px;
+} */
+
+/* em size - relative to current font */
+/* .blockdiv {
+    font-size: 60px;
+}
+
+.emsize {
+    font-size: 2em;
+    /* font-size: .5em; */
+/* }  */
+
+
+/* rem - size relative to root size */
+/* .blockdiv {
+    font-size: 60px;
+} */
+
+/* .remsize { */
+    /* font-size: 2rem; */
+    /* font-size: 5rem; */
+    /* font-size: .5rem;
+    font-weight: bold;;
+} */
+
+/* width size as percent */
+/* .blockitem {
+    background-color: palevioletred;
+    width: 50%;
+} */
