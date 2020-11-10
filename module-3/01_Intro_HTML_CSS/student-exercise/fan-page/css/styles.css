@@ -1,0 +1,82 @@
+body{
+    background-color: black;
+}
+h1{
+    font-size: 50px;
+    color:red;
+    text-align: center;
+    background-color: white;
+    
+}
+
+p{
+    font-size: 20px;
+text-align: center;
+color: white;
+}
+
+h2{
+    color:white;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none; /* Remove default bullets */
+  }
+  
+  ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: white; /* Change the color */
+  
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 2em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
+
+  .column {
+    float: left;
+    color:white;
+  
+ 
+  
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+      color:white;
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  
+  tr{
+      color:white;
+      
+  }
+  
+h3{
+    color:white;
+    font-size: 16px;
+    font-style: italic;
+    line-height: normal;
+}
+table {
+  border-collapse: separate;
+ 
+}
+
+th,
+td {
+  width: 150px;
+  text-align: left;
+  border: 1px solid black;
+  padding: 5px;
+}
+th{
+  font-size: 19px;
+  text-decoration: underline;
+}
+a{
+  color:red ;
+}

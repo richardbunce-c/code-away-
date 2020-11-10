@@ -1,0 +1,14 @@
+body{
+    background-color: gray;
+    
+}
+label{
+    color:rgb(63, 218, 32);
+}
+label, input {
+    display: block;
+}
+
+label {
+    margin-top: 20px;
+}
