@@ -1,0 +1,53 @@
+body {
+    /* use image for background */
+    background-image: url("../images/tebbackground.png");
+}
+
+header {
+    background-color: gray;
+    height: 100px;
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px 0px;
+}
+
+ul {
+    text-align: center;
+    /* list-style-position: inside   will include the bullets
+     as part of the inside text of the list */
+    list-style-position: inside;
+}
+
+ul > li {
+    font-size: 28px;
+}
+
+#listdiv {
+    background-color: goldenrod;
+    padding: 10px;
+    text-align: center;
+}
+
+#listtitle {
+    font-size: 24px;
+}
+
+#formdiv {
+    background-color: goldenrod;
+    padding: 10px;
+}
+
+form > input {
+    margin-top: 20px;
+}
+
+.formitem {
+    padding: 10px 0px;
+}
+
+/* make label inline-block so can specify width and then align it left */
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+}
