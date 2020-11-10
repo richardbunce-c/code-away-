@@ -1,0 +1,16 @@
+img {
+    height: 200px;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-size: 40px;
+    color: #a9a9a9;
+    /* border-style: solid;
+    border-color: darkslateblue;
+    border-width: 20px; */
+    border: solid darkslateblue 20px;
+}
