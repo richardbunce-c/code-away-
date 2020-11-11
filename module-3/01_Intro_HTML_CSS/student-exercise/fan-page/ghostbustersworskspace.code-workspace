@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\img"
+		},
+		{
+			"path": "..\\info-form"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "fan-page"
+	}
+}
