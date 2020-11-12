@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hero footer{
+display:flex;
+justify-content: space-between;
+}
+
+#featured{
+    display: flex;
+    flex-direction: column;
+}
+
+#featured>section{
+    display: flex;
+}
+
+#featured section article div{
+    display: flex;
+    text-align: center;
+}
+
+#all-items >section{
+    display:flex;
+    flex-direction: column;
+}
+
+#all-items section article {
+    display: flex;
+}
+
+#all-items section:last-child{
+    order: 2;
+}
