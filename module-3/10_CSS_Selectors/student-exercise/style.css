@@ -27,7 +27,6 @@ aside {
     padding-top: 20px;
     padding-left: 20px;
     border-right: 1px solid #00ADEE;
-    
 }
 
 a {
@@ -36,7 +35,6 @@ a {
 }
 
 aside > img {
-  height: 120px;
   display: block;  
   width: 50%;
     margin-left: auto;
