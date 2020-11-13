@@ -1,0 +1,199 @@
+html {
+    height: 100%;
+
+    /* Definte the default font-size to 16px */
+    font-size: 16px;
+}
+
+* {
+    /* width based on content AND margin/border/padding */
+    box-sizing: border-box;
+}
+
+body {
+    /* Change the default page font */
+    font-family: 'Raleway', sans-serif;
+    /* Gradient Background Image */
+    background-image: linear-gradient(to bottom, #858c90, #bbb);
+    /* Do not repeat the background, stretch it */
+    background-repeat: no-repeat;
+    /* Do not scroll the background with the page */
+    background-attachment: fixed;
+
+    /* don't wrap */
+    white-space: nowrap;
+   }
+
+   div.trello-list {
+       /* use multi-column layout */
+       display: inline-block;
+
+       /* set width of columns */
+       width: 300px;
+
+       background-color: #ddd;
+
+       border-radius: 2px 3px;
+
+   }
+
+   div.trello-list h2 {
+       /* add margin */
+
+        /* 1 value means all sides */
+        /* 2 -> top/bottom left/right */
+        /* 3 -> top left/right bottom */
+        /* 4 -> top right bottom left */
+
+       margin: 8px;
+
+       /* change font info based on root font */
+       font-size: 1rem;
+       font-weight: bold;
+   }
+
+   div.trello-list > ol {
+       margin: 0px;
+       padding: 0px;
+   }
+
+
+   
+   div.trello-list li {
+
+        /* Can change ol/ul #/marker type and location - will provide some
+        more info soon  */
+       list-style: none;
+
+       /* this would be another option */
+       /* list-style: square inside; */
+
+       background-color: rgb(255, 255, 255);
+
+        /* 0.9 size in relation to ROOT font */
+       font-size: 0.9rem;
+
+       margin-bottom: 10px;
+       padding: 8px;
+
+       /* allow wrapping in list item */
+       white-space: normal;
+   }
+
+   
+   div.trello-list li:hover {
+       background-color: hotpink;
+       color: white;
+   }
+  
+  /* The last list item needs to reset its margin */
+  div.trello-list li:last-child {
+    margin-bottom: 0px;
+  }
+  
+  div.trello-list a {
+    /* Layout */
+    display: block;
+  
+    /* Look */
+    text-decoration: none;
+    color: #888;
+  
+    /* Spacing */
+    padding: 8px 0px 8px 5px; /* top right bottom left */
+  
+    font-size: 0.85rem;
+  }
+  
+  div.trello-list a:hover {
+    background-color: rgba(9, 45, 66, 0.1);
+  }
+
+  
+
+  div.trello-list {
+    margin-right: 10px;
+
+    vertical-align: top;
+}
+   /** header */
+
+  
+   header > h1, header > p {
+       /* allow the items to sit next to each other (normally block so on own line) */
+       display: inline-block;
+
+       height: 20px;
+
+       padding-right: 10px;
+
+       vertical-align: middle;
+
+       /* version of rgba that allows you to specify opacity (alpha)
+       alpha - Defines the opacity as a number between 0.0 (fully transparent) and 1.0 (fully opaque) */
+
+
+       color: rgba(255, 255, 255, 0.5);
+
+       border-right: 1px solid rgba(255, 255, 255, 0.5);
+   }
+
+   header > h1 {
+        /* change to uppercase with NO code!!! */
+       text-transform: uppercase;
+
+       font-size: 1.1rem;
+   }
+
+   header > p {
+       font-size: 0.9rem;
+
+       padding-left: 5px;
+   }
+
+   .labels span {
+       display: inline-block;
+
+       vertical-align: top;
+
+       width: 35px;
+
+       height: 8px;
+
+       border-radius: 3px
+   }
+/* 
+   The label class is used in a span with no content to draw 
+   the shape in give color. */
+
+   .label.pathway {
+       background-color: red;
+   }
+
+   .label.individual {
+       background-color: green;
+   }
+
+   .label.pair {
+       background-color: teal;
+   }
+
+   .label.general {
+       background-color: orange;
+   }
+
+
+   /* let's you fix the header in place so other things scroll under it
+   but it stays put */
+   header {
+       position: fixed;
+
+       top: 0px;
+
+       height: 50px;
+   }
+
+   main {
+       margin-top: 50px;;
+   }
+   
