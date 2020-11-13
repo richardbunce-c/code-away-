@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    /* container is stacked so column */
+    flex-direction: column;
+    
+    /* align not jsutify because axis has flipped
+
+        ROW: align-items: up/down justify-content: left/right
+        COLUMN: justify-content: up/down align-items: left/right */
+
+    align-items: center;
+}
+
+#hero footer {
+    display: flex;
+
+    /* add space in between so each item gets forced to one side */
+
+    justify-content: space-between;
+}
+
+/* we don't need to make #feaured a flexbox because 
+the elements are block level elements so they should 
+stack on their own */
+
+#featured > section {
+    display: flex;
+}
+
+/* icon */
+/* using font awesome which is text so can use text-align */
+/* SOMETIMES YOU NEED TO EXPERIMENT TO FIND CORRECT WAY TO CENTER */
+#featured section article div {
+    text-align: center;
+} 
+
+#all-items > section {
+    display: flex;
+    flex-direction: column;
+}
+
+#all-items section article {
+    display: flex;
+}
+
+/* /* icon in the  */
+/* #all-items section article:last-child div:first-child{ */
+    /* flex items have a natural left/right (for row) order
+     wo we will override and tell CSS to use icon as 2nd item */
+    /* order: 2;
+} */
+
+/* nth child as opposed to last child */
+/* #all-items section article:nth-child(2) div:first-child {
+    order: 2;
+} */
+
+/* can target as even nthchild which makes it more flexible */
+#all-items section article:nth-child(even) div:first-child {
+    order: 2;
+}
+
+/* can target whole row and tell it to reverse the items */
+/* #all-items section article:nth-child(even) {
+    flex-direction: row-reverse;
+} */
+
+@media screen and (max-width: 1024px) {
+    #featured > section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #featured section article:nth-child(even) {
+        border-left: none;
+        border-right: none;
+      }
+}
