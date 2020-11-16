@@ -11,21 +11,35 @@
 function variables() {
   
   // Declares a variable those value can be changed
+let myText = "Hello World!";
 
+console.log(myText);
+
+myText="Hi world!";
+console.log(myText);
   // declare without initializing
+let mySecondText;
 
+mySecondText="hi again";
+console.log(mySecondText);
 
   // Declares a variable where the value cannot be changed
-
+const MY_CONST_TEXT='hell const world';
   
   // cannot assign new value to const - will throw Exception
-  // MY_CONST_TEXT = 'Howdy const world!';
+   MY_CONST_TEXT = 'Howdy const world!';
 
   // cannot declare const without initializing
-  // const MY_NEW_CONST_TEXT;
+  const MY_NEW_CONST_TEXT;
 
 
   // Declares a variable that will always be an array
+  const MY_CONST_ARRAY=[
+    'hi',
+    'there',
+    'folks'
+  ];
+  console.table(MY_CONST_ARRAY);
 }
 
 /**
@@ -220,10 +234,16 @@ function objects() {
   };
 
   // Log the object
-
+console.log(person);
   // Log the first and last name
-
+console.log(`${person.firstName} ${person.lastName}`)
   // Log each employee
+  console.table(person.employees);
+
+  //with loop
+  for(let i =0; i>person.employees.length; i++){
+    console.log(person.employees[i]);
+  }
 }
 
 /*
