@@ -27,7 +27,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
-
+function multiplyTogether(firstParameter, secondParameter){
+  return firstParameter*secondParameter;
+}
 /**
  * This version makes sure that no parameters are ever missing. If
  * someone calls this function without parameters, we default the
@@ -38,7 +40,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
-
+function multiplyNoUndefined(firstParameter=0, secondParameter=0){
+  return firstParameter*secondParameter;
+}
 
  
 /**
@@ -101,7 +105,14 @@ function concatAll() {
   return result;
 }
 
-
+/**
+ * Generates a string with the user's name, age, and quirks
+ * @param {string} name 
+ * @param {number} age 
+ * @param {string[]} listOfQuirks the list of the user's quirks
+ * @param {string} separator defaults to ,
+ * @returns {string} returns a string with the user's name, age, and quirks
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
@@ -117,8 +128,16 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+ // let filterFunc=(num)=> {return num % 3 === 0};
+  //return numbersToFilter.filter(filterFunc);
 
+  //use anonymous method
+  return numbersToFilter.filter((num) => {return num % 3 ===0}); 
+}
+function filterDivisibleByThree(num){
+  return num % 3 ===0;
+}
 /**
  * Takes an array and, using the power of anonymous functions, generates
  * their sum.
