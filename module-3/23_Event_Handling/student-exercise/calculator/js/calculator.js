@@ -72,28 +72,71 @@ function clear() {
 }
 
 // add event listener for when the DOM is loaded
-document.addEventListener('LOADED_EVENT_GOES_HERE', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
   // set the variable called display equal to the display element
   // HINT: use its id #display to get a reference to it
-
+display=document.getElementById('display');
   // get a reference to all of the numbers
   // loop over each of the numbers
   // add a click event listener to each number to call the function clickNumber
+initNumbers();
 
   // get a reference to the decimal point button
   // add a click event listener to call the function clickNumber
   // the decimal point is part of the number so append it
+initDecimal();
 
   // get a reference to the all clear button
   // add a click event listener to call the function clear  
+initClear();
 
   // get a reference to all of the operators;
   // loop over each of the operators
   // add a click event listener to each operator to call the function clickOperator
-
+initOperators();
   // add click event listener for the equal sign
   // should call the function performOperation
-
+initEqual();
 });
 
+function initNumbers(){
+  const numbers=document.querySelectorAll('.number');
+  numbers.forEach((element)=> {
+    element.addEventListener('click', (event)=>{
+clickNumber(event);
+    });
+  });
+}
+
+function initDecimal(){
+  const decimal=document.querySelector('.decimal');
+  decimal.addEventListener('click', (event)=> {
+    clickNumber(event);
+  });
+}
+
+function initClear(){
+  const allClear=document.querySelector('.all-clear');
+  allClear.addEventListener('click', () =>{
+    clear()
+  });
+}
+
+function initOperators(){
+  const operators=document.querySelectorAll('.operator');
+  operators.forEach(addOperatorListener);
+
+  operators.forEach((ele)=>{
+    ele.addEventListener('click', clickOperator)
+  });
+}
+
+function addOperatorListener(element){
+  element.addEventListener('click', ()=>{clickOperator()});
+}
+
+function initEqual(){
+  const equalSign=document.querySelector('.equal-sign');
+  equalSign.addEventListener('click', performOperation);
+  }
