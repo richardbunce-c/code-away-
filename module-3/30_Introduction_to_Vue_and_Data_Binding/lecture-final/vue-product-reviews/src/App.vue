@@ -1,0 +1,33 @@
+<template>
+  <div id="app">
+    <!-- Comment something! -->
+    <product-review message="The quick brown fox" />
+  </div>
+</template>
+
+<script>
+import ProductReview from './components/ProductReview.vue'
+
+export default {
+  name: 'App',
+  components: {
+    ProductReview
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+
+  /* TODO 06: Add a little styling */
+  max-width: 800px;
+  margin: 60px auto 0 auto;
+
+}
+</style>
